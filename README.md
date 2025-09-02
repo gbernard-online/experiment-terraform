@@ -22,7 +22,6 @@
 https://developer.hashicorp.com/terraform  
 https://www.youtube.com/playlist?list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
-
 &nbsp;  
 `-`
 
@@ -31,6 +30,6 @@ https://www.youtube.com/playlist?list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 > 
 > [![Gmail](gmail.webp "ghislain.bernard@gmail.com")](mailto:ghislain.bernard@gmail.com) [![Github](github.webp "ghislain-bernard")](https://github.com/ghislain-bernard) [![LinkedIN](linkedin.webp "ghislain-bernard")](https://www.linkedin.com/in/ghislain-bernard) 
 
-[`MIT License`](https://opensource.org/license/mit)
+[MIT License](https://opensource.org/license/mit)
 
-`c[_]`
+`c[_] 2025`

@@ -1,9 +1,5 @@
 # EXPERIMENT TERRAFORM
 
-![Avatar](img/ghislain.webp "Ghislain Bernard") [![Gmail](img/gmail.webp "ghislain.bernard@gmail.com")](mailto:ghislain.bernard@gmail.com) [![Github](img/github.webp "ghislain-bernard")](https://github.com/ghislain-bernard) [![LinkedIN](img/linkedin.webp "ghislain-bernard")](https://www.linkedin.com/in/ghislain-bernard)
-
-`c[_] 2025`
-
 ## PRACTICE #1 - TERRAFORM - DEBIAN 13
 
 [![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform) [![Debian](img/debian.webp "Debian")](https://debian.org)
@@ -232,10 +228,8 @@ removed 'tfplan'
 
 ```
 
+
 &nbsp;  
 `-`
 
-> MIT License  
-> ghislain.bernard@gmail.com
-
-![Monster](img/monster.webp "Boo!")
+[![Monster](img/monster.webp "Boo!")](../README.md)  
