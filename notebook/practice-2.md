@@ -63,7 +63,7 @@ $ ls --almost-all --width=1
 main.tf
 .terraform.lock.hcl
 
-$ tree .terraform
+$ tree -a .terraform
 .terraform
 └── providers
     └── registry.terraform.io
