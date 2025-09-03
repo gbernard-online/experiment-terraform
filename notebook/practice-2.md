@@ -226,7 +226,7 @@ $ cat terraform.tfstate
         {
           "schema_version": 0,
           "attributes": {
-            "id": "5309773127465234477",
+            "id": "3656337450534903586",
             "triggers": null
           },
           "sensitive_attributes": [],
@@ -351,7 +351,7 @@ $ terraform validate
 Success! The configuration is valid.
 
 $ terraform plan --out=tfplan
-null_resource.color: Refreshing state... [id=5309773127465234477]
+null_resource.color: Refreshing state... [id=3656337450534903586]
 
 Changes to Outputs:
   ~ color = "green" -> "red"
