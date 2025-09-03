@@ -2,7 +2,7 @@
 
 [![Terraform](terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
 
-## CONTENTS
+## TABLE OF CONTENTS
 
 [Install](notebook/install.md)
 
