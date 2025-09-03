@@ -26,7 +26,6 @@ terraform: /usr/bin/terraform
 $ terraform --version
 Terraform v1.13.1
 on linux_amd64
-
 ```
 
 ## INSTALL - TERRAFORM - UBUNTU 24
@@ -55,7 +54,6 @@ terraform: /usr/bin/terraform
 $ terraform --version
 Terraform v1.13.1
 on linux_amd64
-
 ```
 
 ## INSTALL - TERRAFORM - ARCHLINUX
@@ -94,7 +92,6 @@ terraform: /usr/bin/terraform
 $ terraform --version
 Terraform v1.13.1
 on linux_amd64
-
 ```
 
 &nbsp;
