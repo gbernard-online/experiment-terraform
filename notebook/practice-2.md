@@ -341,6 +341,8 @@ variable "color" {
   type    = string
 }
 
+$ terraform fmt --check --diff
+
 $ terraform validate
 Success! The configuration is valid.
 
