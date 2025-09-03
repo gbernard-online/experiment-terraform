@@ -14,11 +14,7 @@ output "variable" {
 }
 EOF
 
-$ ls --almost-all --width=1
-main.tf
-
-$ terraform validate
-Success! The configuration is valid.
+$ terraform fmt --check --diff
 
 $ terraform init
 Initializing the backend...
