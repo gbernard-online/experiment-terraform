@@ -10,17 +10,21 @@ REF: https://www.youtube.com/watch?v=LmHKEiZ1SeA
 ```bash
 $ cat >main.tf <<EOF
 variable "colors" {
-  default = ["green", "orange", "red"]
-  type    = list(string)
+  default = {
+    "green" : "G",
+    "orange" : "O",
+    "red" : "R"
+  }
+  type = map(string)
 }
 
 resource "null_resource" "colors" {
-  count = length(var.colors)
+  for_each = var.colors
   triggers = {
-    color = element(var.colors, count.index)
+    color = each.key
   }
   provisioner "local-exec" {
-    command = "echo '\${element(var.colors, count.index)}'"
+    command = "echo '\${each.value} => \${each.key}'"
   }
 }
 
@@ -65,7 +69,7 @@ following symbols:
 
 Terraform will perform the following actions:
 
-  # null_resource.colors[0] will be created
+  # null_resource.colors["green"] will be created
   + resource "null_resource" "colors" {
       + id       = (known after apply)
       + triggers = {
@@ -73,7 +77,7 @@ Terraform will perform the following actions:
         }
     }
 
-  # null_resource.colors[1] will be created
+  # null_resource.colors["orange"] will be created
   + resource "null_resource" "colors" {
       + id       = (known after apply)
       + triggers = {
@@ -81,7 +85,7 @@ Terraform will perform the following actions:
         }
     }
 
-  # null_resource.colors[2] will be created
+  # null_resource.colors["red"] will be created
   + resource "null_resource" "colors" {
       + id       = (known after apply)
       + triggers = {
@@ -92,11 +96,11 @@ Terraform will perform the following actions:
 Plan: 3 to add, 0 to change, 0 to destroy.
 
 Changes to Outputs:
-  + colors = [
-      + "green",
-      + "orange",
-      + "red",
-    ]
+  + colors = {
+      + green  = "G"
+      + orange = "O"
+      + red    = "R"
+    }
 
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -113,13 +117,13 @@ $ unzip -p tfplan tfstate
   "lineage": "",
   "outputs": {
     "colors": {
-      "value": [
-        "green",
-        "orange",
-        "red"
-      ],
+      "value": {
+        "green": "G",
+        "orange": "O",
+        "red": "R"
+      },
       "type": [
-        "list",
+        "map",
         "string"
       ]
     }
@@ -131,47 +135,47 @@ $ unzip -p tfplan tfstate
 
 ```bash
 $ terraform apply tfplan
-null_resource.colors[0]: Creating...
-null_resource.colors[1]: Creating...
-null_resource.colors[2]: Creating...
-null_resource.colors[1]: Provisioning with 'local-exec'...
-null_resource.colors[1] (local-exec): Executing: ["/bin/sh" "-c" "echo 'orange'"]
-null_resource.colors[0]: Provisioning with 'local-exec'...
-null_resource.colors[2]: Provisioning with 'local-exec'...
-null_resource.colors[0] (local-exec): Executing: ["/bin/sh" "-c" "echo 'green'"]
-null_resource.colors[2] (local-exec): Executing: ["/bin/sh" "-c" "echo 'red'"]
-null_resource.colors[2] (local-exec): red
-null_resource.colors[1] (local-exec): orange
-null_resource.colors[0] (local-exec): green
-null_resource.colors[2]: Creation complete after 0s [id=244867919660145630]
-null_resource.colors[1]: Creation complete after 0s [id=3760479637787281017]
-null_resource.colors[0]: Creation complete after 0s [id=8276275757773130153]
+null_resource.colors["green"]: Creating...
+null_resource.colors["red"]: Creating...
+null_resource.colors["orange"]: Creating...
+null_resource.colors["orange"]: Provisioning with 'local-exec'...
+null_resource.colors["red"]: Provisioning with 'local-exec'...
+null_resource.colors["red"] (local-exec): Executing: ["/bin/sh" "-c" "echo 'R => red'"]
+null_resource.colors["green"]: Provisioning with 'local-exec'...
+null_resource.colors["orange"] (local-exec): Executing: ["/bin/sh" "-c" "echo 'O => orange'"]
+null_resource.colors["green"] (local-exec): Executing: ["/bin/sh" "-c" "echo 'G => green'"]
+null_resource.colors["green"] (local-exec): G => green
+null_resource.colors["green"]: Creation complete after 0s [id=1542343123815282101]
+null_resource.colors["red"] (local-exec): R => red
+null_resource.colors["orange"] (local-exec): O => orange
+null_resource.colors["red"]: Creation complete after 0s [id=7182143739922302509]
+null_resource.colors["orange"]: Creation complete after 0s [id=4762035047447530473]
 
 Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-colors = tolist([
-  "green",
-  "orange",
-  "red",
-])
+colors = tomap({
+  "green" = "G"
+  "orange" = "O"
+  "red" = "R"
+})
 
 $ cat terraform.tfstate
 {
   "version": 4,
   "terraform_version": "1.13.1",
   "serial": 1,
-  "lineage": "b1b3b08e-e2c5-b889-7aba-9038221aad30",
+  "lineage": "402142d9-942c-31c2-232a-2b353b923f35",
   "outputs": {
     "colors": {
-      "value": [
-        "green",
-        "orange",
-        "red"
-      ],
+      "value": {
+        "green": "G",
+        "orange": "O",
+        "red": "R"
+      },
       "type": [
-        "list",
+        "map",
         "string"
       ]
     }
@@ -184,10 +188,10 @@ $ cat terraform.tfstate
       "provider": "provider[\"registry.terraform.io/hashicorp/null\"]",
       "instances": [
         {
-          "index_key": 0,
+          "index_key": "green",
           "schema_version": 0,
           "attributes": {
-            "id": "8276275757773130153",
+            "id": "1542343123815282101",
             "triggers": {
               "color": "green"
             }
@@ -196,10 +200,10 @@ $ cat terraform.tfstate
           "identity_schema_version": 0
         },
         {
-          "index_key": 1,
+          "index_key": "orange",
           "schema_version": 0,
           "attributes": {
-            "id": "3760479637787281017",
+            "id": "4762035047447530473",
             "triggers": {
               "color": "orange"
             }
@@ -208,10 +212,10 @@ $ cat terraform.tfstate
           "identity_schema_version": 0
         },
         {
-          "index_key": 2,
+          "index_key": "red",
           "schema_version": 0,
           "attributes": {
-            "id": "244867919660145630",
+            "id": "7182143739922302509",
             "triggers": {
               "color": "red"
             }
@@ -228,17 +232,23 @@ $ cat terraform.tfstate
 
 ```bash
 $ patch --forward --reject-file=- main.tf <<EOF
-2c2
-<   default = ["green", "orange", "red"]
+4,5c4,5
+<     "orange" : "O",
+<     "red" : "R"
 ---
->   default = ["green", "red", "yellow"]
+>     "red" : "R",
+>     "yellow": "Y"
 EOF
 patching file main.tf
 
-$ cat main.tf | head --lines=4
+$ cat main.tf | head --lines=8
 variable "colors" {
-  default = ["green", "red", "yellow"]
-  type    = list(string)
+  default = {
+    "green" : "G",
+    "red" : "R",
+    "yellow" : "Y"
+  }
+  type = map(string)
 }
 
 $ terraform fmt --check --diff
@@ -247,40 +257,42 @@ $ terraform validate
 Success! The configuration is valid.
 
 $ terraform plan --out=tfplan
-null_resource.colors[0]: Refreshing state... [id=8276275757773130153]
-null_resource.colors[2]: Refreshing state... [id=244867919660145630]
-null_resource.colors[1]: Refreshing state... [id=3760479637787281017]
+null_resource.colors["orange"]: Refreshing state... [id=4762035047447530473]
+null_resource.colors["green"]: Refreshing state... [id=1542343123815282101]
+null_resource.colors["red"]: Refreshing state... [id=7182143739922302509]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
 following symbols:
--/+ destroy and then create replacement
+  + create
+  - destroy
 
 Terraform will perform the following actions:
 
-  # null_resource.colors[1] must be replaced
--/+ resource "null_resource" "colors" {
-      ~ id       = "3760479637787281017" -> (known after apply)
-      ~ triggers = { # forces replacement
-          ~ "color" = "orange" -> "red"
+  # null_resource.colors["orange"] will be destroyed
+  # (because key ["orange"] is not in for_each map)
+  - resource "null_resource" "colors" {
+      - id       = "4762035047447530473" -> null
+      - triggers = {
+          - "color" = "orange"
+        } -> null
+    }
+
+  # null_resource.colors["yellow"] will be created
+  + resource "null_resource" "colors" {
+      + id       = (known after apply)
+      + triggers = {
+          + "color" = "yellow"
         }
     }
 
-  # null_resource.colors[2] must be replaced
--/+ resource "null_resource" "colors" {
-      ~ id       = "244867919660145630" -> (known after apply)
-      ~ triggers = { # forces replacement
-          ~ "color" = "red" -> "yellow"
-        }
-    }
-
-Plan: 2 to add, 0 to change, 2 to destroy.
+Plan: 1 to add, 0 to change, 1 to destroy.
 
 Changes to Outputs:
-  ~ colors = [
-        "green",
-      ~ "orange" -> "red",
-      ~ "red" -> "yellow",
-    ]
+  ~ colors = {
+      - orange = "O"
+      + yellow = "Y"
+        # (2 unchanged attributes hidden)
+    }
 
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -295,55 +307,48 @@ $ diff <(unzip -p tfplan tfstate-prev) <(unzip -p tfplan tfstate)
 <   "lineage": "",
 ---
 >   "serial": 1,
->   "lineage": "b1b3b08e-e2c5-b889-7aba-9038221aad30",
+>   "lineage": "402142d9-942c-31c2-232a-2b353b923f35",
 10,11c10,11
-<         "orange",
-<         "red"
+<         "orange": "O",
+<         "red": "R"
 ---
->         "red",
->         "yellow"
+>         "red": "R",
+>         "yellow": "Y"
 
 $ terraform apply tfplan
-null_resource.colors[1]: Destroying... [id=3760479637787281017]
-null_resource.colors[2]: Destroying... [id=244867919660145630]
-null_resource.colors[2]: Destruction complete after 0s
-null_resource.colors[1]: Destruction complete after 0s
-null_resource.colors[2]: Creating...
-null_resource.colors[1]: Creating...
-null_resource.colors[2]: Provisioning with 'local-exec'...
-null_resource.colors[2] (local-exec): Executing: ["/bin/sh" "-c" "echo 'yellow'"]
-null_resource.colors[1]: Provisioning with 'local-exec'...
-null_resource.colors[1] (local-exec): Executing: ["/bin/sh" "-c" "echo 'red'"]
-null_resource.colors[2] (local-exec): yellow
-null_resource.colors[2]: Creation complete after 0s [id=3975514958148933668]
-null_resource.colors[1] (local-exec): red
-null_resource.colors[1]: Creation complete after 0s [id=7888409234650180857]
+null_resource.colors["orange"]: Destroying... [id=4762035047447530473]
+null_resource.colors["orange"]: Destruction complete after 0s
+null_resource.colors["yellow"]: Creating...
+null_resource.colors["yellow"]: Provisioning with 'local-exec'...
+null_resource.colors["yellow"] (local-exec): Executing: ["/bin/sh" "-c" "echo 'Y => yellow'"]
+null_resource.colors["yellow"] (local-exec): Y => yellow
+null_resource.colors["yellow"]: Creation complete after 0s [id=3668724608357555791]
 
-Apply complete! Resources: 2 added, 0 changed, 2 destroyed.
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 Outputs:
 
-colors = tolist([
-  "green",
-  "red",
-  "yellow",
-])
+colors = tomap({
+  "green" = "G"
+  "red" = "R"
+  "yellow" = "Y"
+})
 
 $ cat terraform.tfstate
 {
   "version": 4,
   "terraform_version": "1.13.1",
-  "serial": 6,
-  "lineage": "b1b3b08e-e2c5-b889-7aba-9038221aad30",
+  "serial": 4,
+  "lineage": "402142d9-942c-31c2-232a-2b353b923f35",
   "outputs": {
     "colors": {
-      "value": [
-        "green",
-        "red",
-        "yellow"
-      ],
+      "value": {
+        "green": "G",
+        "red": "R",
+        "yellow": "Y"
+      },
       "type": [
-        "list",
+        "map",
         "string"
       ]
     }
@@ -356,10 +361,10 @@ $ cat terraform.tfstate
       "provider": "provider[\"registry.terraform.io/hashicorp/null\"]",
       "instances": [
         {
-          "index_key": 0,
+          "index_key": "green",
           "schema_version": 0,
           "attributes": {
-            "id": "8276275757773130153",
+            "id": "1542343123815282101",
             "triggers": {
               "color": "green"
             }
@@ -368,10 +373,10 @@ $ cat terraform.tfstate
           "identity_schema_version": 0
         },
         {
-          "index_key": 1,
+          "index_key": "red",
           "schema_version": 0,
           "attributes": {
-            "id": "7888409234650180857",
+            "id": "7182143739922302509",
             "triggers": {
               "color": "red"
             }
@@ -380,10 +385,10 @@ $ cat terraform.tfstate
           "identity_schema_version": 0
         },
         {
-          "index_key": 2,
+          "index_key": "yellow",
           "schema_version": 0,
           "attributes": {
-            "id": "3975514958148933668",
+            "id": "3668724608357555791",
             "triggers": {
               "color": "yellow"
             }
@@ -401,25 +406,33 @@ $ diff terraform.tfstate.backup terraform.tfstate
 4c4
 <   "serial": 1,
 ---
->   "serial": 6,
+>   "serial": 4,
 10,11c10,11
-<         "orange",
-<         "red"
+<         "orange": "O",
+<         "red": "R"
 ---
->         "red",
->         "yellow"
+>         "red": "R",
+>         "yellow": "Y"
+39c39
+<           "index_key": "orange",
+---
+>           "index_key": "red",
 42c42
-<             "id": "3760479637787281017",
+<             "id": "4762035047447530473",
 ---
->             "id": "7888409234650180857",
+>             "id": "7182143739922302509",
 44c44
 <               "color": "orange"
 ---
 >               "color": "red"
-54c54
-<             "id": "244867919660145630",
+51c51
+<           "index_key": "red",
 ---
->             "id": "3975514958148933668",
+>           "index_key": "yellow",
+54c54
+<             "id": "7182143739922302509",
+---
+>             "id": "3668724608357555791",
 56c56
 <               "color": "red"
 ---
@@ -428,9 +441,9 @@ $ diff terraform.tfstate.backup terraform.tfstate
 
 ```bash
 $ terraform destroy -auto-approve
-null_resource.colors[2]: Refreshing state... [id=3975514958148933668]
-null_resource.colors[1]: Refreshing state... [id=7888409234650180857]
-null_resource.colors[0]: Refreshing state... [id=8276275757773130153]
+null_resource.colors["yellow"]: Refreshing state... [id=3668724608357555791]
+null_resource.colors["green"]: Refreshing state... [id=1542343123815282101]
+null_resource.colors["red"]: Refreshing state... [id=7182143739922302509]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
 following symbols:
@@ -438,25 +451,25 @@ following symbols:
 
 Terraform will perform the following actions:
 
-  # null_resource.colors[0] will be destroyed
+  # null_resource.colors["green"] will be destroyed
   - resource "null_resource" "colors" {
-      - id       = "8276275757773130153" -> null
+      - id       = "1542343123815282101" -> null
       - triggers = {
           - "color" = "green"
         } -> null
     }
 
-  # null_resource.colors[1] will be destroyed
+  # null_resource.colors["red"] will be destroyed
   - resource "null_resource" "colors" {
-      - id       = "7888409234650180857" -> null
+      - id       = "7182143739922302509" -> null
       - triggers = {
           - "color" = "red"
         } -> null
     }
 
-  # null_resource.colors[2] will be destroyed
+  # null_resource.colors["yellow"] will be destroyed
   - resource "null_resource" "colors" {
-      - id       = "3975514958148933668" -> null
+      - id       = "3668724608357555791" -> null
       - triggers = {
           - "color" = "yellow"
         } -> null
@@ -465,17 +478,17 @@ Terraform will perform the following actions:
 Plan: 0 to add, 0 to change, 3 to destroy.
 
 Changes to Outputs:
-  - colors = [
-      - "green",
-      - "red",
-      - "yellow",
-    ] -> null
-null_resource.colors[0]: Destroying... [id=8276275757773130153]
-null_resource.colors[2]: Destroying... [id=3975514958148933668]
-null_resource.colors[1]: Destroying... [id=7888409234650180857]
-null_resource.colors[1]: Destruction complete after 0s
-null_resource.colors[0]: Destruction complete after 0s
-null_resource.colors[2]: Destruction complete after 0s
+  - colors = {
+      - green  = "G"
+      - red    = "R"
+      - yellow = "Y"
+    } -> null
+null_resource.colors["red"]: Destroying... [id=7182143739922302509]
+null_resource.colors["green"]: Destroying... [id=1542343123815282101]
+null_resource.colors["yellow"]: Destroying... [id=3668724608357555791]
+null_resource.colors["red"]: Destruction complete after 0s
+null_resource.colors["green"]: Destruction complete after 0s
+null_resource.colors["yellow"]: Destruction complete after 0s
 
 Destroy complete! Resources: 3 destroyed.
 
@@ -483,8 +496,8 @@ $ cat terraform.tfstate
 {
   "version": 4,
   "terraform_version": "1.13.1",
-  "serial": 10,
-  "lineage": "b1b3b08e-e2c5-b889-7aba-9038221aad30",
+  "serial": 8,
+  "lineage": "402142d9-942c-31c2-232a-2b353b923f35",
   "outputs": {},
   "resources": [],
   "check_results": null
