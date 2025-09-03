@@ -11,10 +11,13 @@ REF: https://www.youtube.com/watch?v=LmHKEiZ1SeA
 $ cat >main.tf <<EOF
 variable "color" {
   default = "green"
-  type = string
+  type    = string
 }
 
 resource "null_resource" "color" {
+  triggers = {
+    color = var.color
+  }
   provisioner "local-exec" {
     command = "echo '\${var.color}' | tee color.txt"
   }
@@ -25,8 +28,7 @@ output "color" {
 }
 EOF
 
-$ ls --almost-all --width=1
-main.tf
+$ terraform fmt --check --diff
 
 $ terraform validate
 ╷
@@ -114,7 +116,10 @@ Terraform will perform the following actions:
 
   # null_resource.color will be created
   + resource "null_resource" "color" {
-      + id = (known after apply)
+      + id       = (known after apply)
+      + triggers = {
+          + "color" = "green"
+        }
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -139,14 +144,14 @@ $ unzip -l tfplan
 Archive:  tfplan
   Length      Date    Time    Name
 ---------  ---------- -----   ----
-      215  2025-09-03 20:15   tfplan
-      216  2025-09-03 20:15   tfstate
-      145  2025-09-03 20:15   tfstate-prev
-      220  2025-09-03 20:15   tfconfig/m-/main.tf
-       41  2025-09-03 20:15   tfconfig/modules.json
-     1152  2025-09-03 20:15   .terraform.lock.hcl
+      227  2025-09-03 21:53   tfplan
+      216  2025-09-03 21:53   tfstate
+      145  2025-09-03 21:53   tfstate-prev
+      264  2025-09-03 21:53   tfconfig/m-/main.tf
+       41  2025-09-03 21:53   tfconfig/modules.json
+     1152  2025-09-03 21:53   .terraform.lock.hcl
 ---------                     -------
-     1989                     6 files
+     2045                     6 files
 
 $ unzip -p tfplan .terraform.lock.hcl | md5sum
 cbe9bade7f8e1cf9ac849e29fb1c65d7  -
@@ -185,7 +190,7 @@ null_resource.color: Creating...
 null_resource.color: Provisioning with 'local-exec'...
 null_resource.color (local-exec): Executing: ["/bin/sh" "-c" "echo 'green' | tee color.txt"]
 null_resource.color (local-exec): green
-null_resource.color: Creation complete after 0s [id=3656337450534903586]
+null_resource.color: Creation complete after 0s [id=3056772015431020915]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
@@ -209,7 +214,7 @@ $ cat terraform.tfstate
   "version": 4,
   "terraform_version": "1.13.1",
   "serial": 1,
-  "lineage": "0b53ccee-4444-06f3-4bfa-2120705ea8a2",
+  "lineage": "5120676a-b28b-3935-e18c-a06b83506651",
   "outputs": {
     "color": {
       "value": "green",
@@ -226,8 +231,10 @@ $ cat terraform.tfstate
         {
           "schema_version": 0,
           "attributes": {
-            "id": "3656337450534903586",
-            "triggers": null
+            "id": "3056772015431020915",
+            "triggers": {
+              "color": "green"
+            }
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0
@@ -239,16 +246,16 @@ $ cat terraform.tfstate
 }
 
 $ md5sum terraform.tfstate
-ec3ae961a2b0f97ca0597c15127eb070  terraform.tfstate
+a4fb328733938456021384cee2eee7b2  terraform.tfstate
 
-$  diff <(unzip -p tfplan tfstate) terraform.tfstate
+$ diff <(unzip -p tfplan tfstate) terraform.tfstate
 4,5c4,5
 <   "serial": 0,
 <   "lineage": "",
 ---
 >   "serial": 1,
->   "lineage": "0b53ccee-4444-06f3-4bfa-2120705ea8a2",
-12c12,30
+>   "lineage": "5120676a-b28b-3935-e18c-a06b83506651",
+12c12,32
 <   "resources": [],
 ---
 >   "resources": [
@@ -261,8 +268,10 @@ $  diff <(unzip -p tfplan tfstate) terraform.tfstate
 >         {
 >           "schema_version": 0,
 >           "attributes": {
->             "id": "3656337450534903586",
->             "triggers": null
+>             "id": "3056772015431020915",
+>             "triggers": {
+>               "color": "green"
+>             }
 >           },
 >           "sensitive_attributes": [],
 >           "identity_schema_version": 0
@@ -282,7 +291,7 @@ $ terraform apply tfplan
 ╵
 
 $ terraform plan --out=tfplan
-null_resource.color: Refreshing state... [id=3656337450534903586]
+null_resource.color: Refreshing state... [id=3056772015431020915]
 
 No changes. Your infrastructure matches the configuration.
 
@@ -293,17 +302,17 @@ $ unzip -l tfplan
 Archive:  tfplan
   Length      Date    Time    Name
 ---------  ---------- -----   ----
-      225  2025-09-03 20:32   tfplan
-      684  2025-09-03 20:32   tfstate
-      648  2025-09-03 20:32   tfstate-prev
-      220  2025-09-03 20:32   tfconfig/m-/main.tf
-       41  2025-09-03 20:32   tfconfig/modules.json
-     1152  2025-09-03 20:32   .terraform.lock.hcl
+      237  2025-09-03 22:01   tfplan
+      726  2025-09-03 22:01   tfstate
+      690  2025-09-03 22:01   tfstate-prev
+      264  2025-09-03 22:01   tfconfig/m-/main.tf
+       41  2025-09-03 22:01   tfconfig/modules.json
+     1152  2025-09-03 22:01   .terraform.lock.hcl
 ---------                     -------
-     2970                     6 files
+     3110                     6 files
 
 $ unzip -p tfplan tfstate | md5sum
-ec3ae961a2b0f97ca0597c15127eb070  -
+a4fb328733938456021384cee2eee7b2  -
 
 $ terraform apply tfplan
 
@@ -314,7 +323,7 @@ Outputs:
 color = "green"
 
 $ md5sum terraform.tfstate
-ec3ae961a2b0f97ca0597c15127eb070  terraform.tfstate
+a4fb328733938456021384cee2eee7b2  terraform.tfstate
 
 $ terraform apply tfplan
 
@@ -325,19 +334,28 @@ Outputs:
 color = "green"
 
 $ md5sum terraform.tfstate
-ec3ae961a2b0f97ca0597c15127eb070  terraform.tfstate
+a4fb328733938456021384cee2eee7b2  terraform.tfstate
 ```
 
 ```bash
-$ sed --in-place 2s/green/red/ main.tf
+$ patch --forward --reject-file=- main.tf <<EOF
+2c2
+<   default = "green"
+---
+>   default = "red"
+EOF
+patching file main.tf
 
 $ cat main.tf
 variable "color" {
   default = "red"
-  type = string
+  type    = string
 }
 
 resource "null_resource" "color" {
+  triggers = {
+    color = var.color
+  }
   provisioner "local-exec" {
     command = "echo '${var.color}' | tee color.txt"
   }
@@ -351,13 +369,26 @@ $ terraform validate
 Success! The configuration is valid.
 
 $ terraform plan --out=tfplan
-null_resource.color: Refreshing state... [id=3656337450534903586]
+null_resource.color: Refreshing state... [id=3056772015431020915]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # null_resource.color must be replaced
+-/+ resource "null_resource" "color" {
+      ~ id       = "3056772015431020915" -> (known after apply)
+      ~ triggers = { # forces replacement
+          ~ "color" = "green" -> "red"
+        }
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
 
 Changes to Outputs:
   ~ color = "green" -> "red"
-
-You can apply this plan to save these new output values to the Terraform state, without changing any real
-infrastructure.
 
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -370,14 +401,14 @@ $ unzip -l tfplan
 Archive:  tfplan
   Length      Date    Time    Name
 ---------  ---------- -----   ----
-      249  2025-09-03 20:41   tfplan
-      682  2025-09-03 20:41   tfstate
-      648  2025-09-03 20:41   tfstate-prev
-      218  2025-09-03 20:41   tfconfig/m-/main.tf
-       41  2025-09-03 20:41   tfconfig/modules.json
-     1152  2025-09-03 20:41   .terraform.lock.hcl
+      311  2025-09-03 22:31   tfplan
+      724  2025-09-03 22:31   tfstate
+      690  2025-09-03 22:31   tfstate-prev
+      262  2025-09-03 22:31   tfconfig/m-/main.tf
+       41  2025-09-03 22:31   tfconfig/modules.json
+     1152  2025-09-03 22:31   .terraform.lock.hcl
 ---------                     -------
-     2990                     6 files
+     3180                     6 files
 
 $ diff <(unzip -p tfplan tfstate-prev) <(unzip -p tfplan tfstate)
 4,5c4,5
@@ -385,7 +416,7 @@ $ diff <(unzip -p tfplan tfstate-prev) <(unzip -p tfplan tfstate)
 <   "lineage": "",
 ---
 >   "serial": 1,
->   "lineage": "0b53ccee-4444-06f3-4bfa-2120705ea8a2",
+>   "lineage": "5120676a-b28b-3935-e18c-a06b83506651",
 8c8
 <       "value": "green",
 ---
@@ -398,8 +429,15 @@ $ diff <(unzip -p tfplan tfstate) terraform.tfstate
 >       "value": "green",
 
 $ terraform apply tfplan
+null_resource.color: Destroying... [id=3056772015431020915]
+null_resource.color: Destruction complete after 0s
+null_resource.color: Creating...
+null_resource.color: Provisioning with 'local-exec'...
+null_resource.color (local-exec): Executing: ["/bin/sh" "-c" "echo 'red' | tee color.txt"]
+null_resource.color (local-exec): red
+null_resource.color: Creation complete after 0s [id=5631088929130402692]
 
-Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
 Outputs:
 
@@ -412,8 +450,8 @@ $ cat terraform.tfstate
 {
   "version": 4,
   "terraform_version": "1.13.1",
-  "serial": 2,
-  "lineage": "0b53ccee-4444-06f3-4bfa-2120705ea8a2",
+  "serial": 4,
+  "lineage": "5120676a-b28b-3935-e18c-a06b83506651",
   "outputs": {
     "color": {
       "value": "red",
@@ -430,8 +468,10 @@ $ cat terraform.tfstate
         {
           "schema_version": 0,
           "attributes": {
-            "id": "3656337450534903586",
-            "triggers": null
+            "id": "5631088929130402692",
+            "triggers": {
+              "color": "red"
+            }
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0
@@ -455,16 +495,24 @@ $ diff terraform.tfstate.backup terraform.tfstate
 4c4
 <   "serial": 1,
 ---
->   "serial": 2,
+>   "serial": 4,
 8c8
 <       "value": "green",
 ---
 >       "value": "red",
+22c22
+<             "id": "3056772015431020915",
+---
+>             "id": "5631088929130402692",
+24c24
+<               "color": "green"
+---
+>               "color": "red"
 ```
 
 ```bash
 $ terraform destroy -auto-approve
-null_resource.color: Refreshing state... [id=3656337450534903586]
+null_resource.color: Refreshing state... [id=5631088929130402692]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
 following symbols:
@@ -474,14 +522,17 @@ Terraform will perform the following actions:
 
   # null_resource.color will be destroyed
   - resource "null_resource" "color" {
-      - id = "3656337450534903586" -> null
+      - id       = "5631088929130402692" -> null
+      - triggers = {
+          - "color" = "red"
+        } -> null
     }
 
 Plan: 0 to add, 0 to change, 1 to destroy.
 
 Changes to Outputs:
   - color = "red" -> null
-null_resource.color: Destroying... [id=3656337450534903586]
+null_resource.color: Destroying... [id=5631088929130402692]
 null_resource.color: Destruction complete after 0s
 
 Destroy complete! Resources: 1 destroyed.
@@ -490,21 +541,12 @@ $ cat terraform.tfstate
 {
   "version": 4,
   "terraform_version": "1.13.1",
-  "serial": 4,
-  "lineage": "0b53ccee-4444-06f3-4bfa-2120705ea8a2",
+  "serial": 6,
+  "lineage": "5120676a-b28b-3935-e18c-a06b83506651",
   "outputs": {},
   "resources": [],
   "check_results": null
 }
-
-$ ls --almost-all --width=1
-.terraform
-color.txt
-main.tf
-.terraform.lock.hcl
-terraform.tfstate
-terraform.tfstate.backup
-tfplan
 
 $ rm --verbose color.txt main.tf .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup tfplan
 removed 'main.tf'
