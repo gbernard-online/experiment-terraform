@@ -2,7 +2,8 @@
 
 ## INSTALL - TERRAFORM - DEBIAN 13
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform) [![Debian](img/debian.webp "Debian")](https://debian.org)
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
+[![Debian](img/debian.webp "Debian")](https://debian.org)
 
 REF: https://developer.hashicorp.com/terraform/install
 
@@ -30,7 +31,8 @@ on linux_amd64
 
 ## INSTALL - TERRAFORM - UBUNTU 24
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform) [![Ubuntu](img/ubuntu.webp "Ubuntu")](https://ubuntu.com)
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
+[![Ubuntu](img/ubuntu.webp "Ubuntu")](https://ubuntu.com)
 
 REF: https://developer.hashicorp.com/terraform/install
 
@@ -58,7 +60,8 @@ on linux_amd64
 
 ## INSTALL - TERRAFORM - ARCHLINUX
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform) [![Archlinux](img/archlinux.webp "Archlinux")](https://archlinux.org)
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
+[![Archlinux](img/archlinux.webp "Archlinux")](https://archlinux.org)
 
 ```bash
 $ sudo pacman --noconfirm --noprogressbar --sync terraform
@@ -94,7 +97,8 @@ on linux_amd64
 
 ```
 
-&nbsp;  
+&nbsp;
+
 `-`
 
-[![Monster](img/monster.webp "Boo!")](../README.md)  
+[![Monster](img/monster.webp "Boo!")](../README.md)
