@@ -324,17 +324,6 @@ color = "green"
 
 $ md5sum terraform.tfstate
 a4fb328733938456021384cee2eee7b2  terraform.tfstate
-
-$ terraform apply tfplan
-
-Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
-
-Outputs:
-
-color = "green"
-
-$ md5sum terraform.tfstate
-a4fb328733938456021384cee2eee7b2  terraform.tfstate
 ```
 
 ```bash
@@ -346,23 +335,10 @@ $ patch --forward --reject-file=- main.tf <<EOF
 EOF
 patching file main.tf
 
-$ cat main.tf
+$ cat main.tf | head --lines=4
 variable "color" {
   default = "red"
   type    = string
-}
-
-resource "null_resource" "color" {
-  triggers = {
-    color = var.color
-  }
-  provisioner "local-exec" {
-    command = "echo '${var.color}' | tee color.txt"
-  }
-}
-
-output "color" {
-  value = var.color
 }
 
 $ terraform validate
