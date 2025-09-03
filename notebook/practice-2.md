@@ -209,7 +209,7 @@ $ cat terraform.tfstate
   "version": 4,
   "terraform_version": "1.13.1",
   "serial": 1,
-  "lineage": "0f9f2ff7-5eb9-42f3-b82c-7b40a08e7534",
+  "lineage": "0b53ccee-4444-06f3-4bfa-2120705ea8a2",
   "outputs": {
     "color": {
       "value": "green",
