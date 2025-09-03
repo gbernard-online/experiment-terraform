@@ -347,6 +347,9 @@ output "color" {
   value = var.color
 }
 
+$ terraform validate
+Success! The configuration is valid.
+
 $ terraform plan --out=tfplan
 null_resource.color: Refreshing state... [id=5309773127465234477]
 
