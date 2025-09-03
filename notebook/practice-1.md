@@ -17,16 +17,25 @@ EOF
 $ ls --almost-all --width=1
 main.tf
 
+$ terraform validate
+Success! The configuration is valid.
+
 $ terraform init
 Initializing the backend...
 Initializing provider plugins...
 
 Terraform has been successfully initialized!
-...
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
 
 $ terraform validate
 Success! The configuration is valid.
-
 ```
 
 ```bash
@@ -185,7 +194,6 @@ $ diff <(unzip -p tfplan tfstate-prev) <(unzip -p tfplan tfstate)
 >       "type": "string"
 >     }
 >   },
-
 ```
 
 ```bash
@@ -225,7 +233,6 @@ $ diff <(unzip -p tfplan tfstate) terraform.tfstate
 ---
 >   "serial": 1,
 >   "lineage": "ec5c74ce-8dbe-b9f5-0b4b-4353e12226cd",
-
 ```
 
 ```bash
@@ -293,7 +300,6 @@ removed 'main.tf'
 removed 'terraform.tfstate'
 removed 'terraform.tfstate.backup'
 removed 'tfplan'
-
 ```
 
 &nbsp;
