@@ -10,8 +10,8 @@ REF: https://www.youtube.com/watch?v=LmHKEiZ1SeA
 ```bash
 $ cat >main.tf <<EOF
 variable "colors" {
-  default = ["green", "orange", "red"]
   type    = list(string)
+  default = ["green", "orange", "red"]
 }
 
 resource "null_resource" "colors" {
@@ -228,7 +228,7 @@ $ cat terraform.tfstate
 
 ```bash
 $ patch --forward --reject-file=- main.tf <<EOF
-2c2
+3c2
 <   default = ["green", "orange", "red"]
 ---
 >   default = ["green", "red", "yellow"]
@@ -237,8 +237,8 @@ patching file main.tf
 
 $ cat main.tf | head --lines=4
 variable "colors" {
-  default = ["green", "red", "yellow"]
   type    = list(string)
+  default = ["green", "red", "yellow"]
 }
 
 $ terraform fmt --check --diff

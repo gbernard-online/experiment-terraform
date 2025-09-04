@@ -10,8 +10,8 @@ REF: https://www.youtube.com/watch?v=LmHKEiZ1SeA
 ```bash
 $ cat >main.tf <<EOF
 variable "color" {
-  default = "green"
   type    = string
+  default = "green"
 }
 
 resource "null_resource" "color" {
@@ -340,8 +340,8 @@ patching file main.tf
 
 $ cat main.tf | head --lines=4
 variable "color" {
-  default = "red"
   type    = string
+  default = "red"
 }
 
 $ terraform fmt --check --diff
