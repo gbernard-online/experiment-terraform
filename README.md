@@ -14,6 +14,9 @@
 ## REFERENCES
 
 https://developer.hashicorp.com/terraform  
+https://developer.hashicorp.com/terraform/docs  
+https://developer.hashicorp.com/terraform/tutorials
+
 https://www.youtube.com/playlist?list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
 &nbsp;

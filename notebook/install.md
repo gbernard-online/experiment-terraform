@@ -1,11 +1,16 @@
 # EXPERIMENT TERRAFORM
 
+## REFERENCES
+
+https://developer.hashicorp.com/terraform/install
+
+https://www.youtube.com/watch?v=7gtzumVHZtE&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=2
+
 ## INSTALL - TERRAFORM - DEBIAN 13
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
-[![Debian](img/debian.webp "Debian")](https://debian.org)
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
+[![Debian](img/debian.webp "Debian")](https://debian.org)13
 
-REF: https://developer.hashicorp.com/terraform/install
 
 ```bash
 $ apt-cache policy terraform | head --lines=7
@@ -30,10 +35,8 @@ on linux_amd64
 
 ## INSTALL - TERRAFORM - UBUNTU 24
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
-[![Ubuntu](img/ubuntu.webp "Ubuntu")](https://ubuntu.com)
-
-REF: https://developer.hashicorp.com/terraform/install
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
+[![Ubuntu](img/ubuntu.webp "Ubuntu")](https://ubuntu.com)24
 
 ```bash
 $ apt-cache policy terraform | head --lines=7
@@ -58,8 +61,8 @@ on linux_amd64
 
 ## INSTALL - TERRAFORM - ARCHLINUX
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
-[![Archlinux](img/archlinux.webp "Archlinux")](https://archlinux.org)
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
+[![Archlinux](img/archlinux.webp "Archlinux")](https://archlinux.org)X
 
 ```bash
 $ sudo pacman --noconfirm --noprogressbar --sync terraform
