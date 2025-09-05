@@ -1,11 +1,22 @@
 # EXPERIMENT TERRAFORM
 
+## REFERENCES
+
+https://developer.hashicorp.com/terraform/language/values/outputs  
+https://developer.hashicorp.com/terraform/cli/commands/fmt  
+https://developer.hashicorp.com/terraform/cli/commands/init  
+https://developer.hashicorp.com/terraform/cli/commands/validate  
+https://developer.hashicorp.com/terraform/cli/commands/plan  
+https://developer.hashicorp.com/terraform/cli/commands/show  
+https://developer.hashicorp.com/terraform/cli/commands/apply  
+https://developer.hashicorp.com/terraform/cli/commands/destroy
+
+https://www.youtube.com/watch?v=7gtzumVHZtE&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=2
+
 ## PRACTICE #1 - TERRAFORM - DEBIAN 13
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
-[![Debian](img/debian.webp "Debian")](https://debian.org)
-
-REF: https://www.youtube.com/watch?v=7gtzumVHZtE
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
+[![Debian](img/debian.webp "Debian")](https://debian.org)13
 
 ```bash
 $ cat >main.tf <<EOF

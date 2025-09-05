@@ -1,11 +1,16 @@
 # EXPERIMENT TERRAFORM
 
+## REFERENCES
+
+https://developer.hashicorp.com/terraform/language/expressions/type-constraints  
+https://developer.hashicorp.com/terraform/language/meta-arguments/count
+
+https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=4
+
 ## PRACTICE #3 - TERRAFORM - DEBIAN 13
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
-[![Debian](img/debian.webp "Debian")](https://debian.org)
-
-REF: https://www.youtube.com/watch?v=LmHKEiZ1SeA
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
+[![Debian](img/debian.webp "Debian")](https://debian.org)13
 
 ```bash
 $ cat >main.tf <<EOF

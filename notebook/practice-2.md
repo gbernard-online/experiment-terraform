@@ -1,11 +1,20 @@
 # EXPERIMENT TERRAFORM
 
+## REFERENCES
+
+https://developer.hashicorp.com/terraform/language/values/variables  
+https://developer.hashicorp.com/terraform/language/expressions/strings  
+https://spacelift.io/blog/how-to-use-terraform-variables  
+https://developer.hashicorp.com/terraform/language/resources/syntax  
+https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource  
+https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec
+
+https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=4
+
 ## PRACTICE #2 - TERRAFORM - DEBIAN 13
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
-[![Debian](img/debian.webp "Debian")](https://debian.org)
-
-REF: https://www.youtube.com/watch?v=LmHKEiZ1SeA
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
+[![Debian](img/debian.webp "Debian")](https://debian.org)13
 
 ```bash
 $ cat >main.tf <<EOF

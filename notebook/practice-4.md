@@ -1,11 +1,15 @@
 # EXPERIMENT TERRAFORM
 
-## PRACTICE #3 - TERRAFORM - DEBIAN 13
+## REFERENCES
 
-[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)
-[![Debian](img/debian.webp "Debian")](https://debian.org)
+https://spacelift.io/blog/terraform-map-variable
 
-REF: https://www.youtube.com/watch?v=LmHKEiZ1SeA
+https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=4
+
+## PRACTICE #4 - TERRAFORM - DEBIAN 13
+
+[![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
+[![Debian](img/debian.webp "Debian")](https://debian.org)13
 
 ```bash
 $ cat >main.tf <<EOF
