@@ -75,31 +75,15 @@ deb [arch=amd64] https://apt.releases.hashicorp.com noble main
 EOF
 
 $ sudo apt-get update
-Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
-Hit:2 https://download.docker.com/linux/ubuntu noble InRelease
-Get:3 https://apt.releases.hashicorp.com noble InRelease [12.9 kB]
-Get:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-Get:5 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
-Get:6 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:4 https://download.docker.com/linux/ubuntu noble InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:6 https://apt.releases.hashicorp.com noble InRelease [12.9 kB]
 Hit:7 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.34/deb  InRelease
 Get:8 https://apt.releases.hashicorp.com noble/main amd64 Packages [200 kB]
-Get:9 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1,118 kB]
-Get:10 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [21.6 kB]
-Get:11 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
-Get:12 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [879 kB]
-Get:13 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.3 kB]
-Get:14 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
-Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1,389 kB]
-Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
-Get:17 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
-Get:18 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1,481 kB]
-Get:19 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [377 kB]
-Get:20 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-Get:21 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7,076 B]
-Get:22 http://archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
-Get:23 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [19.2 kB]
-Get:24 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-Fetched 6,114 kB in 2s (3,584 kB/s) 
+Fetched 213 kB in 1s (197 kB/s)  
 Reading package lists... Done
 
 $ apt --option=Apt::Cmd::Disable-Script-Warning=true policy terraform | head --lines=6
