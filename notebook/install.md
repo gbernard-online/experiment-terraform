@@ -21,11 +21,13 @@ deb [arch=amd64] https://apt.releases.hashicorp.com trixie main
 EOF
 
 $ sudo apt-get update
-Hit:1 http://security.debian.org/debian-security trixie-security InRelease
-Hit:2 http://deb.debian.org/debian trixie InRelease
-Hit:3 http://deb.debian.org/debian trixie-updates InRelease
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease
+Hit:3 http://security.debian.org/debian-security trixie-security InRelease
 Hit:4 https://download.docker.com/linux/debian trixie InRelease
-Hit:5 https://apt.releases.hashicorp.com trixie InRelease
+Get:5 https://apt.releases.hashicorp.com trixie InRelease [12.9 kB]
+Get:6 https://apt.releases.hashicorp.com trixie/main amd64 Packages [200 kB]
+Fetched 213 kB in 1s (383 kB/s)
 Reading package lists... Done
 
 $ apt-cache policy terraform | head --lines=6
