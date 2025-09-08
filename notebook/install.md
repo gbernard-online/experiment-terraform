@@ -36,35 +36,7 @@ terraform:
      1.13.1-1 500
         500 https://apt.releases.hashicorp.com trixie/main amd64 Packages
 
-$ apt depends podman terraform
-podman
-  Depends: conmon
- |Depends: crun
-  Depends: runc
-    containerd.io
-  Depends: golang-github-containers-common
-  Depends: netavark
-  Depends: init-system-helpers (>= 1.52)
-  Depends: libc6 (>= 2.38)
-  Depends: libgpgme11t64 (>= 1.23.2)
-  Depends: libseccomp2 (>= 2.5.0)
-  Depends: libsqlite3-0 (>= 3.36.0)
-  Depends: libsubid5 (>= 1:4.16.0)
-  Recommends: buildah (>= 1.31)
-  Recommends: ca-certificates
- |Recommends: catatonit
- |Recommends: tini
-  Recommends: dumb-init
-  Recommends: containers-storage
-  Recommends: criu
-  Recommends: dbus-user-session
-  Recommends: libcriu2
-  Recommends: passt
-  Recommends: slirp4netns
-  Recommends: uidmap
-  Suggests: containernetworking-plugins
-  Suggests: docker-compose
-  Suggests: iptables
+$ apt depends terraform
 terraform
   Depends: git
 
@@ -138,30 +110,7 @@ terraform:
      1.13.1-1 500
         500 https://apt.releases.hashicorp.com noble/main amd64 Packages
 
-$ apt depends podman terraform
-podman
-  Depends: conmon
- |Depends: crun
-  Depends: runc
-    containerd.io
-  Depends: golang-github-containers-common
-  Depends: libc6 (>= 2.38)
-  Depends: libdevmapper1.02.1 (>= 2:1.02.97)
-  Depends: libgpgme11t64 (>= 1.4.1)
-  Depends: libseccomp2 (>= 2.5.0)
-  Depends: libsqlite3-0 (>= 3.36.0)
-  Depends: libsubid4 (>= 1:4.11.1)
-  Recommends: buildah (>= 1.31)
- |Recommends: catatonit
- |Recommends: tini
-  Recommends: dumb-init
-  Recommends: dbus-user-session
-  Recommends: passt
-  Recommends: slirp4netns
-  Recommends: uidmap
-  Suggests: containers-storage
-  Suggests: docker-compose
-  Suggests: iptables
+$ apt depends terraform
 terraform
   Depends: git
 
