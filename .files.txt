@@ -1,0 +1,16 @@
+.editorconfig
+.prettierrc
+notebook/img/archlinux.webp
+notebook/img/debian.webp
+notebook/img/github.webp
+notebook/img/linkedin.webp
+notebook/img/terraform.webp
+notebook/img/ubuntu.webp
+notebook/install.md
+notebook/practice1.md
+notebook/practice2.md
+notebook/practice3.md
+notebook/practice4.md
+terraform.webp
+.files.txt
+README.md
