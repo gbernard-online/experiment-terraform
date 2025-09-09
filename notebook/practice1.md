@@ -54,7 +54,7 @@ Changes to Outputs:
 You can apply this plan to save these new output values to the Terraform state, without changing any real
 infrastructure.
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 Saved the plan to: tfplan
 
@@ -131,8 +131,8 @@ $ terraform show --json tfplan | jq
 }
 
 $ file --brief tfplan
-Zip archive data, made by v2.0, extract using at least v2.0, last modified Sep 03 2025 08:51:28, uncompressed size 120,
-method=deflate
+Zip archive data, made by v2.0, extract using at least v2.0, last modified Sep 03 2025 08:51:28, uncompressed si
+ze 120, method=deflate
 
 $ unzip -l tfplan
 Archive:  tfplan
