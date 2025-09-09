@@ -85,7 +85,7 @@ Hit:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease
 Get:6 https://apt.releases.hashicorp.com noble InRelease [12.9 kB]
 Hit:7 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.34/deb  InRelease
 Get:8 https://apt.releases.hashicorp.com noble/main amd64 Packages [200 kB]
-Fetched 213 kB in 1s (197 kB/s)  
+Fetched 213 kB in 1s (197 kB/s)
 Reading package lists... Done
 
 $ apt --option=Apt::Cmd::Disable-Script-Warning=true policy terraform | head --lines=6

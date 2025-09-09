@@ -43,8 +43,8 @@ $ terraform validate
 ╷
 │ Error: Missing required provider
 │
-│ This configuration requires provider registry.terraform.io/hashicorp/null, but that provider isn’t available. You may
-│ be able to install it automatically by running:
+│ This configuration requires provider registry.terraform.io/hashicorp/null, but that provider isn't available.
+│ You may be able to install it automatically by running:
 │   terraform init
 ╵
 
@@ -120,8 +120,8 @@ cbe9bade7f8e1cf9ac849e29fb1c65d7  .terraform.lock.hcl
 ```bash
 $ terraform plan --out=tfplan
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
-following symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -139,7 +139,7 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 Changes to Outputs:
   + color = "green"
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 Saved the plan to: tfplan
 
@@ -298,8 +298,8 @@ $ terraform apply tfplan
 ╷
 │ Error: Saved plan is stale
 │
-│ The given plan file can no longer be applied because the state was changed by another operation after the plan was
-│ created.
+│ The given plan file can no longer be applied because the state was changed by another operation after the
+│ plan was created.
 ╵
 
 $ terraform plan --out=tfplan
@@ -307,8 +307,8 @@ null_resource.color: Refreshing state... [id=3056772015431020915]
 
 No changes. Your infrastructure matches the configuration.
 
-Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are
-needed.
+Terraform has compared your real infrastructure against your configuration and found no differences, so no
+changes are needed.
 
 $ unzip -l tfplan
 Archive:  tfplan
@@ -361,8 +361,8 @@ Success! The configuration is valid.
 $ terraform plan --out=tfplan
 null_resource.color: Refreshing state... [id=3056772015431020915]
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
-following symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
 -/+ destroy and then create replacement
 
 Terraform will perform the following actions:
@@ -380,7 +380,7 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 Changes to Outputs:
   ~ color = "green" -> "red"
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 Saved the plan to: tfplan
 
@@ -504,8 +504,8 @@ $ diff terraform.tfstate.backup terraform.tfstate
 $ terraform destroy -auto-approve
 null_resource.color: Refreshing state... [id=5631088929130402692]
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
-following symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
   - destroy
 
 Terraform will perform the following actions:
