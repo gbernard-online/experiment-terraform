@@ -20,15 +20,8 @@ $ sudo dd of=/etc/apt/sources.list.d/hashicorp.list status=none <<EOF
 deb [arch=amd64] https://apt.releases.hashicorp.com trixie main
 EOF
 
-$ sudo apt-get update
-Hit:1 http://deb.debian.org/debian trixie InRelease
-Hit:2 http://deb.debian.org/debian trixie-updates InRelease
-Hit:3 http://security.debian.org/debian-security trixie-security InRelease
-Hit:4 https://download.docker.com/linux/debian trixie InRelease
-Get:5 https://apt.releases.hashicorp.com trixie InRelease [12.9 kB]
-Get:6 https://apt.releases.hashicorp.com trixie/main amd64 Packages [200 kB]
-Fetched 213 kB in 1s (383 kB/s)
-Reading package lists... Done
+$ sudo apt --quiet=2 update
+All packages are up to date.
 
 $ apt-cache policy terraform | head --lines=6
 terraform:
@@ -52,7 +45,7 @@ Summary:
   Space needed: 100 MB / 7,949 MB available
 |...|
 
-$ ls /usr/share/doc/terraform
+$ ls --width=1 /usr/share/doc/terraform
 LICENSE.txt
 
 $ whereis terraform
@@ -76,17 +69,8 @@ $ sudo dd of=/etc/apt/sources.list.d/hashicorp.list status=none <<EOF
 deb [arch=amd64] https://apt.releases.hashicorp.com noble main
 EOF
 
-$ sudo apt-get update
-Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu noble InRelease
-Hit:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
-Hit:4 https://download.docker.com/linux/ubuntu noble InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease
-Get:6 https://apt.releases.hashicorp.com noble InRelease [12.9 kB]
-Hit:7 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.34/deb  InRelease
-Get:8 https://apt.releases.hashicorp.com noble/main amd64 Packages [200 kB]
-Fetched 213 kB in 1s (197 kB/s)
-Reading package lists... Done
+$ sudo apt --quiet=2 update
+All packages are up to date.
 
 $ apt --option=Apt::Cmd::Disable-Script-Warning=true policy terraform | head --lines=6
 terraform:
@@ -107,7 +91,7 @@ The following NEW packages will be installed:
 Need to get 30.3 MB of archives.
 |...|
 
-$ ls /usr/share/doc/terraform
+$ ls --width=1 /usr/share/doc/terraform
 LICENSE.txt
 
 $ whereis terraform
@@ -165,7 +149,7 @@ Optional dependencies for terraform
 :: Running post-transaction hooks...
 (1/1) Arming ConditionNeedsUpdate...
 
-$ ls /usr/share/licenses/terraform
+$ ls --width=1 /usr/share/licenses/terraform
 LICENSE
 
 $ whereis terraform
