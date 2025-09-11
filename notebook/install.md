@@ -4,7 +4,7 @@
 
 https://developer.hashicorp.com/terraform/install
 
-https://www.youtube.com/watch?v=7gtzumVHZtE&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=2
+https://www.youtube.com/watch?v=7gtzumVHZtE&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
 ## INSTALL - TERRAFORM - DEBIAN 13
 
