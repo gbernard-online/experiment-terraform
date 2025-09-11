@@ -43,7 +43,7 @@ $ terraform validate
 ╷
 │ Error: Missing required provider
 │
-│ This configuration requires provider registry.terraform.io/hashicorp/null, but that provider isn’t available.
+│ This configuration requires provider registry.terraform.io/hashicorp/null, but that provider isnʼt available.
 │ You may be able to install it automatically by running:
 │   terraform init
 ╵
