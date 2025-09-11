@@ -522,4 +522,4 @@ $ rm --recursive .terraform
 
 `-`
 
-[![Monster](img/monster.webp "Boo!")](../README.md)
+[![Monster](https://avatars.githubusercontent.com/u/47848582?s=96&v=4 "Boo!")](../README.md)
