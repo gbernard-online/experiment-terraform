@@ -5,7 +5,7 @@
 https://developer.hashicorp.com/terraform/language/meta-arguments/for_each  
 https://spacelift.io/blog/terraform-map-variable
 
-https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=4
+https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
 ## PRACTICE #4 - TERRAFORM - DEBIAN 13
 
