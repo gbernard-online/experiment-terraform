@@ -5,7 +5,7 @@
 https://developer.hashicorp.com/terraform/language/expressions/type-constraints  
 https://developer.hashicorp.com/terraform/language/meta-arguments/count
 
-https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=4
+https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
 ## PRACTICE #3 - TERRAFORM - DEBIAN 13
 
