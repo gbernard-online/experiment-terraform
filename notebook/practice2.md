@@ -9,7 +9,7 @@ https://developer.hashicorp.com/terraform/language/resources/syntax
 https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource  
 https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec
 
-https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx&index=4
+https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
 ## PRACTICE #2 - TERRAFORM - DEBIAN 13
 
