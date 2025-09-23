@@ -52,7 +52,8 @@ $ TF_VAR_variable=TF_VAR_variable terraform apply --auto-approve
 Changes to Outputs:
   ~ variable = "main.tf" -> "TF_VAR_variable"
 
-You can apply this plan to save these new output values to the Terraform state, without changing any real infrastructure.
+You can apply this plan to save these new output values to the Terraform state, without changing any real
+infrastructure.
 
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
