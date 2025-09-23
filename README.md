@@ -9,7 +9,8 @@
 [Practice #1](notebook/practice1.md)  
 [Practice #2](notebook/practice2.md)  
 [Practice #3](notebook/practice3.md)  
-[Practice #4](notebook/practice4.md)
+[Practice #4](notebook/practice4.md)  
+[Practice #5](notebook/practice5.md)
 
 ## REFERENCES
 
