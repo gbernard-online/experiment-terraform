@@ -321,11 +321,11 @@ $ diff <(unzip -p tfplan tfstate) terraform.tfstate.backup
 >   "serial": 1,
 >   "lineage": "ec5c74ce-8dbe-b9f5-0b4b-4353e12226cd",
 
-$ rm --verbose main.tf terraform.tfstate terraform.tfstate.backup tfplan
+$ rm --verbose main.tf tfplan terraform.tfstate terraform.tfstate.backup
 removed 'main.tf'
+removed 'tfplan'
 removed 'terraform.tfstate'
 removed 'terraform.tfstate.backup'
-removed 'tfplan'
 ```
 
 &nbsp;
