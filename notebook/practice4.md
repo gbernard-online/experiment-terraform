@@ -38,7 +38,7 @@ output "colors" {
 }
 EOF
 
-$ terraform fmt --check --diff
+$ terraform fmt -check -diff
 
 $ terraform init
 Initializing the backend...
@@ -66,7 +66,7 @@ Success! The configuration is valid.
 ```
 
 ```bash
-$ terraform plan --out=tfplan
+$ terraform plan -out=tfplan
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
 with the following symbols:
@@ -166,6 +166,46 @@ colors = tomap({
   "red" = "R"
 })
 
+$ terraform output
+colors = tomap({
+  "green" = "G"
+  "orange" = "O"
+  "red" = "R"
+})
+
+$ terraform output
+colors = tomap({
+  "green" = "G"
+  "orange" = "O"
+  "red" = "R"
+})
+
+$ terraform output colors
+tomap({
+  "green" = "G"
+  "orange" = "O"
+  "red" = "R"
+})
+
+$ terraform output -json
+{
+  "colors": {
+    "sensitive": false,
+    "type": [
+      "map",
+      "string"
+    ],
+    "value": {
+      "green": "G",
+      "orange": "O",
+      "red": "R"
+    }
+  }
+}
+
+$ terraform output -json colors
+{"green":"G","orange":"O","red":"R"}
+
 $ cat terraform.tfstate
 {
   "version": 4,
@@ -256,12 +296,12 @@ variable "colors" {
   }
 }
 
-$ terraform fmt --check --diff
+$ terraform fmt -check -diff
 
 $ terraform validate
 Success! The configuration is valid.
 
-$ terraform plan --out=tfplan
+$ terraform plan -out=tfplan
 null_resource.colors["green"]: Refreshing state... [id=2452610097488578034]
 null_resource.colors["red"]: Refreshing state... [id=809270721912172328]
 null_resource.colors["orange"]: Refreshing state... [id=3604600544529068914]
@@ -508,12 +548,12 @@ $ cat terraform.tfstate
   "check_results": null
 }
 
-$ rm --verbose main.tf .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup tfplan
+$ rm --verbose main.tf .terraform.lock.hcl tfplan terraform.tfstate terraform.tfstate.backup
 removed 'main.tf'
 removed '.terraform.lock.hcl'
+removed 'tfplan'
 removed 'terraform.tfstate'
 removed 'terraform.tfstate.backup'
-removed 'tfplan'
 
 $ rm --recursive .terraform
 ```
