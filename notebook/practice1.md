@@ -9,6 +9,7 @@ https://developer.hashicorp.com/terraform/cli/commands/validate
 https://developer.hashicorp.com/terraform/cli/commands/plan  
 https://developer.hashicorp.com/terraform/cli/commands/show  
 https://developer.hashicorp.com/terraform/cli/commands/apply  
+https://developer.hashicorp.com/terraform/cli/commands/output  
 https://developer.hashicorp.com/terraform/cli/commands/destroy
 
 https://www.youtube.com/watch?v=7gtzumVHZtE&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
@@ -212,10 +213,13 @@ Outputs:
 
 variable = "value"
 
-$ terraform output 
+$ terraform output
 variable = "value"
 
-$ terraform output --json
+$ terraform output variable
+"value"
+
+$ terraform output -json
 {
   "variable": {
     "sensitive": false,
@@ -223,6 +227,9 @@ $ terraform output --json
     "value": "value"
   }
 }
+
+$ terraform output -json variable
+"value"
 
 $ ls --almost-all --width=1
 main.tf
