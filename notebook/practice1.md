@@ -25,7 +25,7 @@ output "variable" {
 }
 EOF
 
-$ terraform fmt --check --diff
+$ terraform fmt -check -diff
 
 $ terraform init
 Initializing the backend...
@@ -46,7 +46,7 @@ Success! The configuration is valid.
 ```
 
 ```bash
-$ terraform plan --out=tfplan
+$ terraform plan -out=tfplan
 
 Changes to Outputs:
   + variable = "value"
@@ -73,7 +73,7 @@ Changes to Outputs:
 You can apply this plan to save these new output values to the Terraform state, without changing any real
 infrastructure.
 
-$ terraform show --json tfplan | jq
+$ terraform show -json tfplan | jq
 {
   "format_version": "1.2",
   "terraform_version": "1.13.1",
@@ -211,6 +211,18 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 Outputs:
 
 variable = "value"
+
+$ terraform output 
+variable = "value"
+
+$ terraform output --json
+{
+  "variable": {
+    "sensitive": false,
+    "type": "string",
+    "value": "value"
+  }
+}
 
 $ ls --almost-all --width=1
 main.tf
