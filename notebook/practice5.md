@@ -1,4 +1,4 @@
-# WIP: EXPERIMENT TERRAFORM
+# EXPERIMENT TERRAFORM
 
 ## REFERENCES
 
@@ -23,9 +23,9 @@ output "variable" {
 }
 EOF
 
-$ terraform fmt --check --diff
+$ terraform fmt -check -diff
 
-$ terraform apply --auto-approve
+$ terraform apply -auto-approve
 
 Changes to Outputs:
   + variable = "main.tf"
@@ -39,7 +39,7 @@ Outputs:
 
 variable = "main.tf"
 
-$ cat terraform.tfstate | jq .outputs.variable
+$ terraform output
 {
   "value": "main.tf",
   "type": "string"
@@ -47,7 +47,7 @@ $ cat terraform.tfstate | jq .outputs.variable
 ```
 
 ```bash
-$ TF_VAR_variable=TF_VAR_variable terraform apply --auto-approve
+$ TF_VAR_variable=TF_VAR_variable terraform apply -auto-approve
 
 Changes to Outputs:
   ~ variable = "main.tf" -> "TF_VAR_variable"
@@ -79,7 +79,7 @@ $ cat >terraform.tfvars <<EOF
 variable = "terraform.tfvars"
 EOF
 
-$ terraform apply --auto-approve
+$ terraform apply -auto-approve
 
 Changes to Outputs:
   ~ variable = "TF_VAR_variable" -> "terraform.tfvars"
@@ -105,7 +105,7 @@ $ cat >terraform.tfvars.json <<EOF
 }
 EOF
 
-$ terraform apply --auto-approve
+$ terraform apply -auto-approve
 
 Changes to Outputs:
   ~ variable = "terraform.tfvars" -> "terraform.tfvars.json"
@@ -132,7 +132,7 @@ cat >1.auto.tfvars <<EOF
 variable = "1.auto.tfvars"
 EOF
 
-$ terraform apply --auto-approve
+$ terraform apply -auto-approve
 
 Changes to Outputs:
   ~ variable = "terraform.tfvars.json" -> "1.auto.tfvars"
@@ -158,7 +158,7 @@ cat >1.auto.tfvars.json <<EOF
 }
 EOF
 
-$ terraform apply --auto-approve
+$ terraform apply -auto-approve
 
 Changes to Outputs:
   ~ variable = "1.auto.tfvars" -> "1.auto.tfvars.json"
@@ -182,7 +182,7 @@ $ cat >2.auto.tfvars <<EOF
 variable = "2.auto.tfvars"
 EOF
 
-$ terraform apply --auto-approve
+$ terraform apply -auto-approve
 
 Changes to Outputs:
   ~ variable = "1.auto.tfvars.json" -> "2.auto.tfvars"
@@ -208,7 +208,7 @@ $ cat >2.auto.tfvars.json <<EOF
 }
 EOF
 
-$ terraform apply --auto-approve
+$ terraform apply -auto-approve
 
 Changes to Outputs:
   ~ variable = "2.auto.tfvars" -> "2.auto.tfvars.json"
@@ -230,10 +230,10 @@ $ cat terraform.tfstate | jq .outputs.variable
 ```
 
 ```bash
-$ terraform apply --auto-approve --var='variable=--var'
+$ terraform apply -auto-approve -var='variable=-var'
 
 Changes to Outputs:
-  ~ variable = "2.auto.tfvars.json" -> "--var"
+  ~ variable = "2.auto.tfvars.json" -> "-var"
 
 You can apply this plan to save these new output values to the Terraform state, without changing any real
 infrastructure.
@@ -242,22 +242,18 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-variable = "--var"
+variable = "-var"
 
 $ cat terraform.tfstate | jq .outputs.variable
 {
-  "value": "--var",
+  "value": "-var",
   "type": "string"
 }
 
-$ cat >var-file.tfvars <<EOF
-variable = "var-file.tfvars"
-EOF
-
-$ terraform apply --auto-approve --var='variable=--var' --var-file=var-file.tfvars
+$ terraform apply -auto-approve -var='variable=-var' -var-file=<(echo 'variable = "-var-file"')
 
 Changes to Outputs:
-  ~ variable = "--var" -> "var-file.tfvars"
+  ~ variable = "-var" -> "-var-file"
 
 You can apply this plan to save these new output values to the Terraform state, without changing any real
 infrastructure.
@@ -266,20 +262,20 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-variable = "var-file.tfvars"
+variable = "-var-file"
 
 $ cat terraform.tfstate | jq .outputs.variable
 {
-  "value": "var-file.tfvars",
+  "value": "-var-file",
   "type": "string"
 }
 ```
 
 ```bash
-$ terraform destroy --auto-approve --var='variable=--var' --var-file=var-file.tfvars
+$ terraform destroy -auto-approve -var='variable=-var' -var-file=<(echo 'variable = "-var-file"')
 
 Changes to Outputs:
-  - variable = "var-file.tfvars" -> null
+  - variable = "-var-file" -> null
 
 You can apply this plan to save these new output values to the Terraform state, without changing any real
 infrastructure.
@@ -291,14 +287,13 @@ removed 'main.tf'
 removed 'terraform.tfstate'
 removed 'terraform.tfstate.backup'
 
-$ rm --verbose terraform.tfvars{,.json} {1,2}.auto.tfvars{,.json} var-file.tfvars
+$ rm --verbose terraform.tfvars{,.json} {1,2}.auto.tfvars{,.json}
 removed 'terraform.tfvars'
 removed 'terraform.tfvars.json'
 removed '1.auto.tfvars'
 removed '1.auto.tfvars.json'
 removed '2.auto.tfvars'
 removed '2.auto.tfvars.json'
-removed 'var-file.tfvars'
 ```
 
 &nbsp;
