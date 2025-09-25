@@ -1,4 +1,4 @@
-# WIP: EXPERIMENT TERRAFORM
+# EXPERIMENT TERRAFORM
 
 ## REFERENCES
 
@@ -77,16 +77,10 @@ $ ls --almost-all --width=1
 main.tf
 .terraform.lock.hcl
 
-$ tree -a .terraform
-.terraform
-└── providers
-    └── registry.terraform.io
-        └── hashicorp
-            └── null
-                └── 3.2.4
-                    └── linux_amd64
-                        ├── LICENSE.txt
-                        └── terraform-provider-null_v3.2.4_x5
+$ find -type f | as-tree
+.terraform/providers/registry.terraform.io/hashicorp/null/3.2.4/linux_amd64
+├── LICENSE.txt
+└── terraform-provider-null_v3.2.4_x5
 
 7 directories, 2 files
 
@@ -208,6 +202,9 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 Outputs:
 
+color = "green"
+
+$ terraform output
 color = "green"
 
 $ ls --almost-all --width=1
@@ -538,11 +535,13 @@ $ cat terraform.tfstate
   "check_results": null
 }
 
-$ rm --verbose color.txt main.tf .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup tfplan
+$ rm --verbose main.tf .terraform.lock.hcl tfplan terraform.tfstate color.txt terraform.tfstate.backup
 removed 'main.tf'
-removed 'terraform.tfstate'
-removed 'terraform.tfstate.backup'
+removed '.terraform.lock.hcl'
 removed 'tfplan'
+removed 'terraform.tfstate'
+removed 'color.txt'
+removed 'terraform.tfstate.backup'
 
 $ rm --recursive .terraform
 ```
