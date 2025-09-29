@@ -6,11 +6,11 @@
 
 [Install](notebook/install.md)
 
-[Practice #1](notebook/practice1.md)  
-[Practice #2](notebook/practice2.md)  
-[Practice #3](notebook/practice3.md)  
-[Practice #4](notebook/practice4.md)  
-[Practice #5](notebook/practice5.md)
+[Practice #1](notebook/practice1.md) Output  
+[Practice #2](notebook/practice2.md) LocalExec  
+[Practice #3](notebook/practice3.md) LocalExec List  
+[Practice #4](notebook/practice4.md) LocalExec Map  
+[Practice #5](notebook/practice5.md) Variables
 
 ## REFERENCES
 
