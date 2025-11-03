@@ -2,12 +2,12 @@
 
 ## REFERENCES
 
-https://developer.hashicorp.com/terraform/language/values/variables  
+https://developer.hashicorp.com/terraform/language/block/variable  
 https://developer.hashicorp.com/terraform/language/expressions/strings  
 https://spacelift.io/blog/how-to-use-terraform-variables  
-https://developer.hashicorp.com/terraform/language/resources/syntax  
+https://developer.hashicorp.com/terraform/language/block/resource  
 https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource  
-https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec
+https://developer.hashicorp.com/terraform/language/provisioners
 
 https://www.youtube.com/watch?v=LmHKEiZ1SeA&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
