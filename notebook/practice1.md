@@ -2,7 +2,7 @@
 
 ## REFERENCES
 
-https://developer.hashicorp.com/terraform/language/values/outputs  
+https://developer.hashicorp.com/terraform/language/block/output  
 https://developer.hashicorp.com/terraform/cli/commands/fmt  
 https://developer.hashicorp.com/terraform/cli/commands/init  
 https://developer.hashicorp.com/terraform/cli/commands/validate  
