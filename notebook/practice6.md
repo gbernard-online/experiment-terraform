@@ -33,31 +33,7 @@ resource "null_resource" "color" {
   }
 }
 
-output "color" {cat >main.tf <<EOF
-variable "color" {
-  type    = string
-  default = "green"
-}
-
-resource "null_resource" "color" {
-  connection {
-    user     = "$USER"
-    host     = "localhost"
-    host_key = file("/etc/ssh/ssh_host_ecdsa_key.pub")
-  }
-  provisioner "local-exec" {
-    command = "echo '\${var.color}' | tee color.txt"
-  }
-  provisioner "file" {
-    source      = "color.txt"
-    destination = "/tmp/color-\${var.color}.txt"
-  }
-}
-
 output "color" {
-  value = var.color
-}
-EOF
   value = var.color
 }
 EOF
