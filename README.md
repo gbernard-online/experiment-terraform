@@ -7,10 +7,12 @@
 [Install](notebook/install.md)
 
 [Practice #1](notebook/practice1.md) Output  
-[Practice #2](notebook/practice2.md) LocalExec  
-[Practice #3](notebook/practice3.md) LocalExec List  
-[Practice #4](notebook/practice4.md) LocalExec Map  
-[Practice #5](notebook/practice5.md) Variables
+[Practice #2](notebook/practice2.md) Null LocalExec  
+[Practice #3](notebook/practice3.md) Null LocalExec List  
+[Practice #4](notebook/practice4.md) Null LocalExec Map  
+[Practice #5](notebook/practice5.md) Variables  
+[Practice #6](notebook/practice6.md) Null RemoteExec  
+[Practice #7](notebook/practice7.md) Null LocalExec File
 
 ## REFERENCES
 
