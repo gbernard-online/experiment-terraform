@@ -337,7 +337,7 @@ a4fb328733938456021384cee2eee7b2  terraform.tfstate
 
 ```bash
 $ patch --forward --reject-file=- main.tf <<EOF
-2c2
+3c3
 <   default = "green"
 ---
 >   default = "red"
