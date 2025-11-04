@@ -112,7 +112,7 @@ cbe9bade7f8e1cf9ac849e29fb1c65d7  .terraform.lock.hcl
 ```
 
 ```bash
-$ terraform plan --out=tfplan
+$ terraform plan -out=tfplan
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
 with the following symbols:
@@ -299,7 +299,7 @@ $ terraform apply tfplan
 │ plan was created.
 ╵
 
-$ terraform plan --out=tfplan
+$ terraform plan -out=tfplan
 null_resource.color: Refreshing state... [id=3056772015431020915]
 
 No changes. Your infrastructure matches the configuration.
@@ -355,7 +355,7 @@ $ terraform fmt --check --diff
 $ terraform validate
 Success! The configuration is valid.
 
-$ terraform plan --out=tfplan
+$ terraform plan -out=tfplan
 null_resource.color: Refreshing state... [id=3056772015431020915]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
