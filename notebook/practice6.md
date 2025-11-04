@@ -135,26 +135,7 @@ color = "green"
 ```
 
 ```bash
-$ patch --forward --reject-file=- main.tf <<EOF
-3c3
-<   default = "green"
----
->   default = "red"
-EOF
-patching file main.tf
-
-$ cat main.tf | head --lines=4
-variable "color" {
-  type    = string
-  default = "red"
-}
-
-$ terraform fmt --check --diff
-
-$ terraform validate
-Success! The configuration is valid.
-
-$ terraform plan --out=tfplan
+$ terraform plan -out=tfplan -var=color=red
 null_resource.color: Refreshing state... [id=8696157448198561516]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
