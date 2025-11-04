@@ -535,12 +535,14 @@ $ cat terraform.tfstate
   "check_results": null
 }
 
-$ rm --verbose main.tf .terraform.lock.hcl tfplan terraform.tfstate color.txt terraform.tfstate.backup
+$ rm --verbose color.txt
+removed 'color.txt'
+
+$ rm --verbose main.tf .terraform.lock.hcl tfplan terraform.tfstate terraform.tfstate.backup
 removed 'main.tf'
 removed '.terraform.lock.hcl'
 removed 'tfplan'
 removed 'terraform.tfstate'
-removed 'color.txt'
 removed 'terraform.tfstate.backup'
 
 $ rm --recursive .terraform
