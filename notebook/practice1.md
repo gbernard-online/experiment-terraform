@@ -55,7 +55,7 @@ Changes to Outputs:
 You can apply this plan to save these new output values to the Terraform state, without changing any real
 infrastructure.
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 Saved the plan to: tfplan
 
