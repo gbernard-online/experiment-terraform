@@ -115,7 +115,7 @@ $ unzip -p tfplan tfstate
 ```
 
 ```bash
-$ $ terraform apply tfplan
+$ terraform apply tfplan
 null_resource.color: Creating...
 null_resource.color: Provisioning with 'local-exec'...
 null_resource.color (local-exec): Executing: ["/bin/sh" "-c" "echo 'green' | tee color.txt"]
@@ -234,16 +234,16 @@ null_resource.color: Destruction complete after 0s
 
 Destroy complete! Resources: 1 destroyed.
 
+$ rm --verbose color.txt /tmp/color.txt
+removed 'color.txt'
+removed '/tmp/color.txt'
+
 $ rm --verbose main.tf .terraform.lock.hcl tfplan terraform.tfstate terraform.tfstate.backup
 removed 'main.tf'
 removed '.terraform.lock.hcl'
 removed 'tfplan'
 removed 'terraform.tfstate'
 removed 'terraform.tfstate.backup'
-
-$ rm --verbose color.txt /tmp/color.txt
-removed 'color.txt'
-removed '/tmp/color.txt'
 
 $ rm --recursive .terraform
 ```
