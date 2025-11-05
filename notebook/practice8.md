@@ -96,7 +96,8 @@ $ docker image list --no-trunc --quiet
 
 $ terraform apply tfplan
 docker_image.nginx: Creating...
-docker_image.nginx: Creation complete after 8s [id=sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9nginx:alpine]
+docker_image.nginx: Creation complete after 8s [id=sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0ff
+f4a1cabed9nginx:alpine]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
@@ -125,7 +126,8 @@ $ terraform validate
 Success! The configuration is valid.
 
 $ terraform plan -out=tfplan
-docker_image.nginx: Refreshing state... [id=sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9nginx:alpine]
+docker_image.nginx: Refreshing state... [id=sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cab
+ed9nginx:alpine]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
 with the following symbols:
@@ -135,10 +137,13 @@ Terraform will perform the following actions:
 
   # docker_image.nginx must be replaced
 -/+ resource "docker_image" "nginx" {
-      ~ id          = "sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9nginx:alpine" -> (known after apply)
-      ~ image_id    = "sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9" -> (known after apply)
+      ~ id          = "sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9nginx:alpine" -> (
+        known after apply)
+      ~ image_id    = "sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9" -> (known after 
+      apply)
       ~ name        = "nginx:alpine" -> "nginx:trixie" # forces replacement
-      ~ repo_digest = "nginx@sha256:b3c656d55d7ad751196f21b7fd2e8d4da9cb430e32f646adcf92441b72f82b14" -> (known after apply)
+      ~ repo_digest = "nginx@sha256:b3c656d55d7ad751196f21b7fd2e8d4da9cb430e32f646adcf92441b72f82b14" -> (known 
+      after apply)
     }
 
 Plan: 1 to add, 0 to change, 1 to destroy.
@@ -151,11 +156,13 @@ To perform exactly these actions, run the following command to apply:
     terraform apply "tfplan"
 
 $ terraform apply tfplan
-docker_image.nginx: Destroying... [id=sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9nginx:alpine]
-docker_image.nginx: Destruction complete after 1s
+docker_image.nginx: Destroying... [id=sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9ngi
+nx:alpine]
+docker_image.nginx: Destruction complete after 0s
 docker_image.nginx: Creating...
 docker_image.nginx: Still creating... [00m10s elapsed]
-docker_image.nginx: Creation complete after 12s [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dnginx:trixie]
+docker_image.nginx: Creation complete after 12s [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968d
+d3e6f06072dnginx:trixie]
 
 Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
 
@@ -165,7 +172,8 @@ sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072d
 
 ```bash
 $ terraform destroy -auto-approve
-docker_image.nginx: Refreshing state... [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dnginx:trixie]
+docker_image.nginx: Refreshing state... [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f060
+72dnginx:trixie]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
 with the following symbols:
@@ -175,14 +183,16 @@ Terraform will perform the following actions:
 
   # docker_image.nginx will be destroyed
   - resource "docker_image" "nginx" {
-      - id          = "sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dnginx:trixie" -> null
+      - id          = "sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dnginx:trixie" -> n
+ull
       - image_id    = "sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072d" -> null
       - name        = "nginx:trixie" -> null
       - repo_digest = "nginx@sha256:1beed3ca46acebe9d3fb62e9067f03d05d5bfa97a00f30938a0a3580563272ad" -> null
     }
 
 Plan: 0 to add, 0 to change, 1 to destroy.
-docker_image.nginx: Destroying... [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dnginx:trixie]
+docker_image.nginx: Destroying... [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dngi
+nx:trixie]
 docker_image.nginx: Destruction complete after 1s
 
 Destroy complete! Resources: 1 destroyed.
