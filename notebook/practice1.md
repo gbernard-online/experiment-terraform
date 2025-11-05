@@ -131,9 +131,13 @@ $ terraform show -json tfplan | jq
   "errored": false
 }
 
-$ file --brief tfplan
-Zip archive data, made by v2.0, extract using at least v2.0, last modified Sep 03 2025 08:51:28, uncompressed s
-ize 120, method=deflate
+$ file --brief tfplan | tr , '\n '
+Zip archive data
+ made by v2.0
+ extract using at least v2.0
+ last modified Sep 03 2025 08:51:28
+ uncompressed size 120
+ method=deflate
 
 $ unzip -l tfplan
 Archive:  tfplan
