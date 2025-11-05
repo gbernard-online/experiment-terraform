@@ -64,8 +64,8 @@ Success! The configuration is valid.
 ```bash
 $ terraform plan -out=tfplan
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
-with the following symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are
+indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -103,7 +103,7 @@ Changes to Outputs:
       + "red",
     ]
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 Saved the plan to: tfplan
 
@@ -289,8 +289,8 @@ null_resource.colors[0]: Refreshing state... [id=8276275757773130153]
 null_resource.colors[2]: Refreshing state... [id=244867919660145630]
 null_resource.colors[1]: Refreshing state... [id=3760479637787281017]
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
-with the following symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are
+indicated with the following symbols:
 -/+ destroy and then create replacement
 
 Terraform will perform the following actions:
@@ -320,7 +320,7 @@ Changes to Outputs:
       ~ "red" -> "yellow",
     ]
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 Saved the plan to: tfplan
 
@@ -470,8 +470,8 @@ null_resource.colors[2]: Refreshing state... [id=3975514958148933668]
 null_resource.colors[1]: Refreshing state... [id=7888409234650180857]
 null_resource.colors[0]: Refreshing state... [id=8276275757773130153]
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
-with the following symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are
+indicated with the following symbols:
   - destroy
 
 Terraform will perform the following actions:
