@@ -139,12 +139,12 @@ Terraform will perform the following actions:
   # docker_image.nginx must be replaced
 -/+ resource "docker_image" "nginx" {
       ~ id          = "sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9nginx:alpine" -> (
-        known after apply)
+known after apply)
       ~ image_id    = "sha256:d4918ca78576a537caa7b0c043051c8efc1796de33fee8724ee0fff4a1cabed9" -> (known after 
-      apply)
+apply)
       ~ name        = "nginx:alpine" -> "nginx:trixie" # forces replacement
       ~ repo_digest = "nginx@sha256:b3c656d55d7ad751196f21b7fd2e8d4da9cb430e32f646adcf92441b72f82b14" -> (known 
-      after apply)
+after apply)
     }
 
 Plan: 1 to add, 0 to change, 1 to destroy.
