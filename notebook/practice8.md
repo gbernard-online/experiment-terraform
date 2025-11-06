@@ -6,7 +6,7 @@ https://developer.hashicorp.com/terraform/tutorials/docker-get-started
 https://registry.terraform.io/providers/calxus/docker/latest/docs
 
 https://www.youtube.com/watch?v=TidvqDcq2Qw&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx  
- 
+
 ## PRACTICE #8 - TERRAFORM - DEBIAN 13
 
 [![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
