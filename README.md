@@ -12,8 +12,8 @@
 [Practice #4](notebook/practice4.md) Null LocalExec Map  
 [Practice #5](notebook/practice5.md) Variables  
 [Practice #6](notebook/practice6.md) Null RemoteExec  
-[Practice #7](notebook/practice7.md) Null LocalExec File  
-[Practice #8](notebook/practice8.md) Docker Image
+[Practice #7](notebook/practice7.md) Null File  
+[Practice #8](notebook/practice8.md) Docker Image Container
 
 ## REFERENCES
 
