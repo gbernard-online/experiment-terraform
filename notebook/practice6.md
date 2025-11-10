@@ -108,9 +108,7 @@ $ unzip -p tfplan tfstate
   "resources": [],
   "check_results": null
 }
-```
 
-```bash
 $ terraform apply tfplan
 null_resource.color: Creating...
 null_resource.color: Provisioning with 'remote-exec'...
