@@ -12,6 +12,10 @@ notebook/practice2.md
 notebook/practice3.md
 notebook/practice4.md
 notebook/practice5.md
+notebook/practice6.md
+notebook/practice7.md
+notebook/practice8.md
+notebook/practice9.md
 terraform.webp
 .files.txt
 README.md
