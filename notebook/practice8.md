@@ -5,7 +5,7 @@
 https://developer.hashicorp.com/terraform/tutorials/docker-get-started  
 https://registry.terraform.io/providers/calxus/docker/latest/docs
 
-https://www.youtube.com/watch?v=TidvqDcq2Qw&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx  
+https://www.youtube.com/watch?v=TidvqDcq2Qw&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
 ## PRACTICE #8 - TERRAFORM - DEBIAN 13
 
@@ -172,128 +172,9 @@ sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072d
 ```
 
 ```bash
-$ cat >>main.tf <<EOF
-
-resource "docker_container" "nginx" {
-  image   = docker_image.nginx.image_id
-  name    = "nginx"
-  restart = "unless-stopped"
-  ports {
-    internal = 80
-    external = 80
-    ip       = "[::]"
-  }
-}
-EOF
-
-$ terraform fmt -check -diff
-
-$ terraform validate
-Success! The configuration is valid.
-```
-
-```bash
-$ terraform plan -out=tfplan
-docker_image.nginx: Refreshing state... [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f0
-6072dnginx:trixie]
-
-Terraform used the selected providers to generate the following execution plan. Resource actions are
-indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  # docker_container.nginx will be created
-  + resource "docker_container" "nginx" {
-      + attach                                      = false
-      + bridge                                      = (known after apply)
-      + command                                     = (known after apply)
-      + container_logs                              = (known after apply)
-      + container_read_refresh_timeout_milliseconds = 15000
-      + entrypoint                                  = (known after apply)
-      + env                                         = (known after apply)
-      + exit_code                                   = (known after apply)
-      + hostname                                    = (known after apply)
-      + id                                          = (known after apply)
-      + image                                       = "sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a82018
-8968dd3e6f06072d"
-      + init                                        = (known after apply)
-      + ipc_mode                                    = (known after apply)
-      + log_driver                                  = (known after apply)
-      + logs                                        = false
-      + must_run                                    = true
-      + name                                        = "nginx"
-      + network_data                                = (known after apply)
-      + network_mode                                = "bridge"
-      + read_only                                   = false
-      + remove_volumes                              = true
-      + restart                                     = "unless-stopped"
-      + rm                                          = false
-      + runtime                                     = (known after apply)
-      + security_opts                               = (known after apply)
-      + shm_size                                    = (known after apply)
-      + start                                       = true
-      + stdin_open                                  = false
-      + stop_signal                                 = (known after apply)
-      + stop_timeout                                = (known after apply)
-      + tty                                         = false
-      + wait                                        = false
-      + wait_timeout                                = 60
-
-      + healthcheck (known after apply)
-
-      + labels (known after apply)
-
-      + ports {
-          + external = 80
-          + internal = 80
-          + ip       = "[::]"
-          + protocol = "tcp"
-        }
-    }
-
-Plan: 1 to add, 0 to change, 0 to destroy.
-
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-Saved the plan to: tfplan
-
-To perform exactly these actions, run the following command to apply:
-    terraform apply "tfplan"
-
-$ docker container list --quiet
-
-$ terraform apply tfplan
-docker_container.nginx: Creating...
-docker_container.nginx: Creation complete after 1s [id=6222c977933fc90f8560b3b32aaef9687c1a66ae59ac4539e70680b
-464f64cfe]
-
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-
-$ docker container list --no-trunc --quiet
-4fe48320a8b09036dc58301c2facc5a2e518f19b521141b11f3d744e0126aac1
-
-$ curl --connect-timeout 5 --fail --ipv4 --show-error --silent localhost
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to nginx!</title>
-|...|
-
-$ curl --connect-timeout 5 --fail --ipv6 --show-error --silent localhost
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to nginx!</title>
-|...|
-```
-
-```bash
 $ terraform destroy -auto-approve
 docker_image.nginx: Refreshing state... [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f0
 6072dnginx:trixie]
-docker_container.nginx: Refreshing state... [id=6222c977933fc90f8560b3b32aaef9687c1a66ae59ac4539e70680b464f64c
-fe]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are
 indicated with the following symbols:
@@ -301,106 +182,21 @@ indicated with the following symbols:
 
 Terraform will perform the following actions:
 
-  # docker_container.nginx will be destroyed
-  - resource "docker_container" "nginx" {
-      - attach                                      = false -> null
-      - command                                     = [
-          - "nginx",
-          - "-g",
-          - "daemon off;",
-        ] -> null
-      - container_read_refresh_timeout_milliseconds = 15000 -> null
-      - cpu_shares                                  = 0 -> null
-      - dns                                         = [] -> null
-      - dns_opts                                    = [] -> null
-      - dns_search                                  = [] -> null
-      - entrypoint                                  = [
-          - "/docker-entrypoint.sh",
-        ] -> null
-      - env                                         = [] -> null
-      - group_add                                   = [] -> null
-      - hostname                                    = "6222c977933f" -> null
-      - id                                          = "6222c977933fc90f8560b3b32aaef9687c1a66ae59ac4539e70680b
-464f64cfe" -> null
-      - image                                       = "sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a82018
-8968dd3e6f06072d" -> null
-      - init                                        = false -> null
-      - ipc_mode                                    = "private" -> null
-      - log_driver                                  = "json-file" -> null
-      - log_opts                                    = {} -> null
-      - logs                                        = false -> null
-      - max_retry_count                             = 0 -> null
-      - memory                                      = 0 -> null
-      - memory_swap                                 = 0 -> null
-      - must_run                                    = true -> null
-      - name                                        = "nginx" -> null
-      - network_data                                = [
-          - {
-              - gateway                   = "172.17.0.1"
-              - global_ipv6_address       = "fd7f:e996:4f39:5d47::2"
-              - global_ipv6_prefix_length = 80
-              - ip_address                = "172.17.0.2"
-              - ip_prefix_length          = 24
-              - ipv6_gateway              = "fd7f:e996:4f39:5d47::1"
-              - mac_address               = "fa:a1:c6:6c:15:be"
-              - network_name              = "bridge"
-            },
-        ] -> null
-      - network_mode                                = "bridge" -> null
-      - privileged                                  = false -> null
-      - publish_all_ports                           = false -> null
-      - read_only                                   = false -> null
-      - remove_volumes                              = true -> null
-      - restart                                     = "unless-stopped" -> null
-      - rm                                          = false -> null
-      - runtime                                     = "runc" -> null
-      - security_opts                               = [] -> null
-      - shm_size                                    = 64 -> null
-      - start                                       = true -> null
-      - stdin_open                                  = false -> null
-      - stop_signal                                 = "SIGQUIT" -> null
-      - stop_timeout                                = 0 -> null
-      - storage_opts                                = {} -> null
-      - sysctls                                     = {} -> null
-      - tmpfs                                       = {} -> null
-      - tty                                         = false -> null
-      - wait                                        = false -> null
-      - wait_timeout                                = 60 -> null
-        # (7 unchanged attributes hidden)
-
-      - ports {
-          - external = 80 -> null
-          - internal = 80 -> null
-          - ip       = "0.0.0.0" -> null
-          - protocol = "tcp" -> null
-        }
-      - ports {
-          - external = 80 -> null
-          - internal = 80 -> null
-          - ip       = "::" -> null
-          - protocol = "tcp" -> null
-        }
-    }
-
   # docker_image.nginx will be destroyed
   - resource "docker_image" "nginx" {
-      - id          = "sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dnginx:trixie" -> 
+      - id          = "sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dnginx:trixie" ->
  null
       - image_id    = "sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072d" -> null
       - name        = "nginx:trixie" -> null
       - repo_digest = "nginx@sha256:1beed3ca46acebe9d3fb62e9067f03d05d5bfa97a00f30938a0a3580563272ad" -> null
     }
 
-Plan: 0 to add, 0 to change, 2 to destroy.
-docker_container.nginx: Destroying... [id=6222c977933fc90f8560b3b32aaef9687c1a66ae59ac4539e70680b464f64cfe]
-docker_container.nginx: Destruction complete after 0s
+Plan: 0 to add, 0 to change, 1 to destroy.
 docker_image.nginx: Destroying... [id=sha256:d261fd19cb63238535ab80d4e1be1d9e7f6c8b5a28a820188968dd3e6f06072dn
 ginx:trixie]
-docker_image.nginx: Destruction complete after 1s
+docker_image.nginx: Destruction complete after 0s
 
-Destroy complete! Resources: 2 destroyed.
-
-$ docker container list --quiet
+Destroy complete! Resources: 1 destroyed.
 
 $ docker image list --no-trunc --quiet
 
