@@ -6,15 +6,15 @@
 
 [Install](notebook/install.md)
 
-[Practice #1](notebook/practice1.md) Output  
-[Practice #2](notebook/practice2.md) Null LocalExec  
-[Practice #3](notebook/practice3.md) Null LocalExec List  
-[Practice #4](notebook/practice4.md) Null LocalExec Map  
-[Practice #5](notebook/practice5.md) Variables  
-[Practice #6](notebook/practice6.md) Null RemoteExec  
-[Practice #7](notebook/practice7.md) Null File  
-[Practice #8](notebook/practice8.md) Docker Image  
-[Practice #9](notebook/practice9.md) Docker Registry Container  
+[Practice #01](notebook/practice01.md) Output  
+[Practice #02](notebook/practice02.md) Null LocalExec  
+[Practice #03](notebook/practice03.md) Null LocalExec List  
+[Practice #04](notebook/practice04.md) Null LocalExec Map  
+[Practice #05](notebook/practice05.md) Variables  
+[Practice #06](notebook/practice06.md) Null RemoteExec  
+[Practice #07](notebook/practice07.md) Null File  
+[Practice #08](notebook/practice08.md) Docker Image  
+[Practice #09](notebook/practice09.md) Docker Registry Container  
 [Practice #10](notebook/practice10.md) Kubernetes Pod
 
 ## REFERENCES
