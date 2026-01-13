@@ -372,6 +372,8 @@ removed 'terraform.tfstate'
 removed 'terraform.tfstate.backup'
 
 $ rm --recursive .terraform
+
+$ unset KUBE_CONFIG_PATH
 ```
 
 &nbsp;
