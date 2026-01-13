@@ -16,8 +16,7 @@ https://www.youtube.com/watch?v=onfZmhADZMg&list=PLn6POgpklwWrpWnv05paAdqbFbV6gA
 [![MicroK8s](img/microk8s.webp "MikroK8s")](https://microk8s.io)1
 
 ```bash
-$ echo $KUBECONFIG
-/var/snap/microk8s/current/credentials/client.config
+$ export KUBE_CONFIG_PATH=/var/snap/microk8s/current/credentials/client.config
 
 $ cat >main.tf <<EOF
 terraform {
@@ -28,9 +27,7 @@ terraform {
   }
 }
 
-provider "kubernetes" {
-  config_path = "/var/snap/microk8s/current/credentials/client.config"
-}
+provider "kubernetes" {}
 
 resource "kubernetes_pod_v1" "nginx" {
   metadata {
