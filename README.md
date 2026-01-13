@@ -14,7 +14,8 @@
 [Practice #6](notebook/practice6.md) Null RemoteExec  
 [Practice #7](notebook/practice7.md) Null File  
 [Practice #8](notebook/practice8.md) Docker Image  
-[Practice #9](notebook/practice9.md) Docker Registry Container
+[Practice #9](notebook/practice9.md) Docker Registry Container  
+[Practice #10](notebook/practice10.md) Kubernetes Pod
 
 ## REFERENCES
 
