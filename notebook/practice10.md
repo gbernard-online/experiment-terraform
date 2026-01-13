@@ -143,7 +143,7 @@ Saved the plan to: tfplan
 To perform exactly these actions, run the following command to apply:
     terraform apply "tfplan"
 
-$ kubectl get pods 
+$ kubectl get pods
 No resources found in default namespace.
 
 $ terraform apply tfplan
@@ -156,16 +156,27 @@ $ kubectl get pods nginx
 NAME    READY   STATUS    RESTARTS   AGE
 nginx   1/1     Running   0          22s
 
-...
+$ kubectl get pods --output=json nginx | jq --raw-output .status.podIP
+10.1.243.204
 
+$ kubectl get pods --output=yaml nginx | yq .spec.containers[].image
+nginx:alpine
+
+$ curl --connect-timeout 5 --fail --show-error --silent 10.1.243.204
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+[...]
 ```
 
 ```bash
-patch --forward --reject-file=- main.tf <<EOF
+$ patch --forward --reject-file=- main.tf <<EOF
 19c19
 <       image = "nginx:alpine"
 ---
 >       image = "nginx:trixie"
+EOF
 patching file main.tf
 
 $ cat main.tf | tail --lines=7
@@ -265,7 +276,18 @@ $ kubectl get pods nginx
 NAME    READY   STATUS    RESTARTS   AGE
 nginx   1/1     Running   0          23s
 
-...
+$ kubectl get pods --output=json nginx | jq --raw-output .status.podIP
+10.1.243.205
+
+$ kubectl get pods --output=yaml nginx | yq .spec.containers[].image
+nginx:trixie
+
+$ curl --connect-timeout 5 --fail --show-error --silent 10.1.243.205
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+[...]
 ```
 
 ```bash
@@ -342,7 +364,7 @@ kubernetes_pod_v1.nginx: Destruction complete after 2s
 
 Destroy complete! Resources: 1 destroyed.
 
-$ kubectl get pods 
+$ kubectl get pods
 No resources found in default namespace.
 
 $ rm --verbose main.tf .terraform.lock.hcl tfplan terraform.tfstate terraform.tfstate.backup
