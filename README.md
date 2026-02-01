@@ -15,7 +15,11 @@
 [Practice #07](notebook/practice07.md) Null File  
 [Practice #08](notebook/practice08.md) Docker Image  
 [Practice #09](notebook/practice09.md) Docker Registry Container  
-[Practice #10](notebook/practice10.md) Kubernetes Pod
+[Practice #10](notebook/practice10.md) Kubernetes Pod  
+[Practice #11](notebook/practice11.md) [TODO] Kubernetes ReplicaSet  
+[Practice #12](notebook/practice12.md) [TODO] Kubernetes Deployment  
+[Practice #13](notebook/practice13.md) [TODO] Kubernetes Service  
+[Practice #14](notebook/practice14.md) Libvirt Domain
 
 ## REFERENCES
 
