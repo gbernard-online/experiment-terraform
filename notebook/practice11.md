@@ -6,7 +6,7 @@ https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resourc
 
 https://www.youtube.com/watch?v=onfZmhADZMg&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
-## PRACTICE #10 - TERRAFORM - UBUNTU 24
+## PRACTICE #11 - TERRAFORM - UBUNTU 24
 
 [![Terraform](img/terraform.webp "Terraform")](https://developer.hashicorp.com/terraform)1
 [![Ubuntu](img/ubuntu.webp "Ubuntu")](https://ubuntu.com)24
