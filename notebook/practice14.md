@@ -343,6 +343,8 @@ $ virsh list --all
 ------------------------
  1    alpine   running
 
+$ sleep 30
+
 $ virsh shutdown alpine
 Domain 'alpine' is being shutdown
 
@@ -358,6 +360,8 @@ $ virsh list --all
  Id   Name     State
 ------------------------
  2    alpine   running
+
+$ sleep 30
 ```
 
 ```bash
