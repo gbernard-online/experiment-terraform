@@ -4,7 +4,8 @@
 
 https://developer.hashicorp.com/terraform/tutorials/kubernetes  
 https://developer.hashicorp.com/terraform/tutorials/kubernetes/kubernetes-provider  
-https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs
+https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs  
+https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod_v1
 
 https://www.youtube.com/watch?v=onfZmhADZMg&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
@@ -48,7 +49,7 @@ $ terraform providers
 
 Providers required by configuration:
 .
-└── provider[registry.terraform.io/hashicorp/docker]
+└── provider[registry.terraform.io/hashicorp/kubernetes]
 
 $ terraform init
 Initializing the backend...
