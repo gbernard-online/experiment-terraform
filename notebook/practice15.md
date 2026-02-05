@@ -2,6 +2,8 @@ EXPERIMENT TERRAFORM
 
 ## REFERENCES
 
+https://cloudinit.readthedocs.io/en/latest
+
 https://www.youtube.com/watch?v=RQWNXESaLn8&list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
 ## PRACTICE #15 - TERRAFORM - UBUNTU 24
@@ -63,6 +65,17 @@ resource "libvirt_volume" "alpine" {
 resource "libvirt_cloudinit_disk" "alpine" {
   name = "alpine"
 
+  meta_data = <<-EOF
+    local-hostname: alpine
+  EOF
+
+  network_config = <<-EOF
+    version: 2
+    ethernets:
+      eth0:
+        dhcp4: true
+  EOF
+
   user_data = <<-EOF
     #cloud-config
     chpasswd:
@@ -74,17 +87,6 @@ resource "libvirt_cloudinit_disk" "alpine" {
     ssh:
       emit_keys_to_console: false
     ssh_pwauth: true
-  EOF
-
-  meta_data = <<-EOF
-    local-hostname: alpine
-  EOF
-
-  network_config = <<-EOF
-    version: 2
-    ethernets:
-      eth0:
-        dhcp4: true
   EOF
 }
 
@@ -696,7 +698,7 @@ removed 'terraform.tfstate'
 removed 'terraform.tfstate.backup'
 
 $ rm --recursive .terraform
-``` -->
+```
 
 &nbsp;
 
