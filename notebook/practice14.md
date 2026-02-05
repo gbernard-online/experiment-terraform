@@ -330,6 +330,10 @@ Saved the plan to: tfplan
 To perform exactly these actions, run the following command to apply:
     terraform apply "tfplan"
 
+$ virsh list --all
+ Id   Name   State
+--------------------
+
 $ terraform apply tfplan
 libvirt_volume.alpine: Creating...
 libvirt_volume.alpine: Creation complete after 0s [id=/var/lib/libvirt/images/alpine.qcow2]
