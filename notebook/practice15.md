@@ -240,11 +240,11 @@ Terraform will perform the following actions:
   # libvirt_cloudinit_disk.alpine will be created
   + resource "libvirt_cloudinit_disk" "alpine" {
       + id             = (known after apply)
-      + meta_data      = <<-EOT
+      + meta_data      = ＜＜-EOT
             local-hostname: alpine
         EOT
       + name           = "alpine"
-      + network_config = <<-EOT
+      + network_config = ＜＜-EOT
             version: 2
             ethernets:
               eth0:
@@ -252,7 +252,7 @@ Terraform will perform the following actions:
         EOT
       + path           = (known after apply)
       + size           = (known after apply)
-      + user_data      = <<-EOT
+      + user_data      = ＜＜-EOT
             #cloud-config
             chpasswd:
               expire: false
@@ -490,11 +490,11 @@ Terraform will perform the following actions:
   # libvirt_cloudinit_disk.alpine will be destroyed
   - resource "libvirt_cloudinit_disk" "alpine" {
       - id             = "a4534b3949328962" -> null
-      - meta_data      = <<-EOT
+      - meta_data      = ＜＜-EOT
             local-hostname: alpine
         EOT -> null
       - name           = "alpine" -> null
-      - network_config = <<-EOT
+      - network_config = ＜＜-EOT
             version: 2
             ethernets:
               eth0:
@@ -503,7 +503,7 @@ Terraform will perform the following actions:
       - path           = "/tmp/terraform-provider-libvirt-cloudinit/cloudinit-a4534b3949328962.iso" 
 -> null
       - size           = 45056 -> null
-      - user_data      = <<-EOT
+      - user_data      = ＜＜-EOT
             #cloud-config
             chpasswd:
               expire: false
