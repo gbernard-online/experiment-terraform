@@ -427,6 +427,10 @@ Saved the plan to: tfplan
 To perform exactly these actions, run the following command to apply:
     terraform apply "tfplan"
 
+$ virsh list --all
+ Id   Name   State
+--------------------
+
 $ terraform apply tfplan
 libvirt_cloudinit_disk.alpine: Creating...
 libvirt_cloudinit_disk.alpine: Creation complete after 0s [id=a4534b3949328962]
