@@ -35,12 +35,14 @@ resource "kubernetes_manifest" "nginx" {
     metadata = {
       name      = "nginx"
       namespace = "default"
+
       labels = {
         app = "nginx"
       }
     }
     spec = {
       replicas = 3
+
       selector = {
         matchLabels = {
           app = "nginx"
