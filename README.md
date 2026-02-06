@@ -17,7 +17,7 @@
 [Practice #09](notebook/practice09.md) Docker Registry Container  
 [Practice #10](notebook/practice10.md) Kubernetes Pod  
 [Practice #11](notebook/practice11.md) Kubernetes ReplicaSet  
-[Practice #12](notebook/practice12.md) [TODO] Kubernetes Deployment  
+[Practice #12](notebook/practice12.md) Kubernetes Deployment  
 [Practice #13](notebook/practice13.md) [TODO] Kubernetes Service  
 [Practice #14](notebook/practice14.md) Libvirt Domain  
 [Practice #15](notebook/practice15.md) Libvirt Domain CloudInit
