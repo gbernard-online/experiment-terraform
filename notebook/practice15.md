@@ -65,18 +65,18 @@ resource "libvirt_volume" "alpine" {
 resource "libvirt_cloudinit_disk" "alpine" {
   name = "alpine"
 
-  meta_data = <<-EOF
+  meta_data = <<-EOT
     local-hostname: alpine
-  EOF
+  EOT
 
-  network_config = <<-EOF
+  network_config = <<-EOT
     version: 2
     ethernets:
       eth0:
         dhcp4: true
-  EOF
+  EOT
 
-  user_data = <<-EOF
+  user_data = <<-EOT
     #cloud-config
     chpasswd:
       expire: false
@@ -87,7 +87,7 @@ resource "libvirt_cloudinit_disk" "alpine" {
     ssh:
       emit_keys_to_console: false
     ssh_pwauth: true
-  EOF
+  EOT
 }
 
 resource "libvirt_volume" "alpine-seed" {
