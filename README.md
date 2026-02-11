@@ -43,4 +43,4 @@ https://www.youtube.com/playlist?list=PLn6POgpklwWrpWnv05paAdqbFbV6gApHx
 
 [MIT License](https://opensource.org/license/mit)
 
-`c[_] 2026`
+`c[_] 2025-2026`
