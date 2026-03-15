@@ -385,8 +385,8 @@ Terraform will perform the following actions:
       + capacity   = (known after apply)
       + create     = {
           + content = {
-              + url = "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/generic_alpine-3.2
-3.2-x86_64-bios-cloudinit-r0.qcow2"
+              + url = "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/generic_alpine-3.23.2-x86_64
+-bios-cloudinit-r0.qcow2"
             }
         }
       + id         = (known after apply)
@@ -422,7 +422,7 @@ Terraform will perform the following actions:
 
 Plan: 5 to add, 0 to change, 0 to destroy.
 
-───────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────----------
 
 Saved the plan to: tfplan
 
@@ -500,8 +500,7 @@ Terraform will perform the following actions:
               eth0:
                 dhcp4: true
         EOT -> null
-      - path           = "/tmp/terraform-provider-libvirt-cloudinit/cloudinit-a4534b3949328962.iso" 
--> null
+      - path           = "/tmp/terraform-provider-libvirt-cloudinit/cloudinit-a4534b3949328962.iso" -> null
       - size           = 45056 -> null
       - user_data      = ＜＜-EOT
             #cloud-config
@@ -636,8 +635,8 @@ Terraform will perform the following actions:
       - capacity   = 209715200 -> null
       - create     = {
           - content = {
-              - url = "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/generic_alpine-3.2
-3.2-x86_64-bios-cloudinit-r0.qcow2" -> null
+              - url = "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/generic_alpine-3.23.2-x86_64
+-bios-cloudinit-r0.qcow2" -> null
             } -> null
         } -> null
       - id         = "/var/lib/libvirt/images/alpine-base.qcow2" -> null
@@ -660,8 +659,7 @@ Terraform will perform the following actions:
       - capacity   = 45056 -> null
       - create     = {
           - content = {
-              - url = "/tmp/terraform-provider-libvirt-cloudinit/cloudinit-a4534b3949328962.iso" -> 
-null
+              - url = "/tmp/terraform-provider-libvirt-cloudinit/cloudinit-a4534b3949328962.iso" -> null
             } -> null
         } -> null
       - id         = "/var/lib/libvirt/images/alpine-seed.iso" -> null
