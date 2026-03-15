@@ -134,7 +134,7 @@ Terraform will perform the following actions:
 
 Plan: 1 to add, 0 to change, 0 to destroy.
 
-───────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────----------
 
 Saved the plan to: tfplan
 
@@ -208,8 +208,8 @@ Terraform will perform the following actions:
 
       ~ metadata {
           - annotations      = {
-              - "cni.projectcalico.org/containerID" = "0cd0aec3336da1fcdd8eb9ea2140c26273279a3d6c2a4
-a3f1a4a98bb0f602c59"
+              - "cni.projectcalico.org/containerID" = "0cd0aec3336da1fcdd8eb9ea2140c26273279a3d6c2a4a3f1a4a98b
+b0f602c59"
               - "cni.projectcalico.org/podIP"       = "10.1.243.204/32"
               - "cni.projectcalico.org/podIPs"      = "10.1.243.204/32"
             } -> null
@@ -255,7 +255,7 @@ a3f1a4a98bb0f602c59"
 
 Plan: 1 to add, 0 to change, 1 to destroy.
 
-───────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────----------
 
 Saved the plan to: tfplan
 
@@ -304,8 +304,8 @@ Terraform will perform the following actions:
 
       - metadata {
           - annotations      = {
-              - "cni.projectcalico.org/containerID" = "052baa189112b6d0e81aff26d3d6d9d995109c487fac7
-9c591b27feda6e53551"
+              - "cni.projectcalico.org/containerID" = "052baa189112b6d0e81aff26d3d6d9d995109c487fac79c591b27fe
+da6e53551"
               - "cni.projectcalico.org/podIP"       = "10.1.243.205/32"
               - "cni.projectcalico.org/podIPs"      = "10.1.243.205/32"
             } -> null
